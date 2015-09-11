@@ -1,0 +1,200 @@
+/*
+@import '@economist/component-reset';
+*/
+@import '@economist/component-grid';
+@import '@economist/component-typography';
+@import '@economist/component-palette';
+
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+ul, ul li, p, h4, a { padding: 0; margin: 0; list-style-type: none; text-decoration: none; }
+
+.ec-footer {
+  font-size: .9em;
+  background-color: var(--color-beijing);
+  border-top-color: var(--color-economist);
+  border-top-style: solid;
+  border-top-width: .4rem;
+  padding: var(--grid-gutter-m);
+  color: var(--color-london);
+}
+
+.ec-footer__header {
+  line-height: 2em;
+  color: var(--color-moscow);
+}
+
+.ec-footer__link {
+  line-height: 3em;
+  color: var(--color-london);
+}
+
+.ec-footer .ec-list__item {
+  line-height: 2em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ec-footer__list--subs .ec-footer__link {
+  color: var(--color-berlin);
+  font-weight: 700;
+}
+
+.ec-footer__list--social .ec-list {
+  display: flex;
+  justify-content: center;
+}
+
+.ec-footer__list--social .ec-list__item {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  flex: 1 0 0;
+}
+
+.ec-footer__quote {
+  color: var(--color-moscow);
+  text-align: center;
+}
+
+.ec-footer__footnote {
+  font-size: .8em;
+}
+
+.ec-footer__copyright {
+  color: var(--color-moscow);
+}
+
+/* mobile only */
+@media (max-width: 800px) {
+
+  .ec-footer__list--subs {
+    padding-bottom: var(--grid-spacing-m);
+  }
+
+  .ec-footer__list--subs .ec-list,
+  .ec-footer__list--economist .ec-list,
+  .ec-footer__footnote .ec-list{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .ec-footer__list--subs .ec-list__item,
+  .ec-footer__list--economist .ec-list__item,
+  .ec-footer__footnote .ec-list__item {
+    flex: 1 0 50%;
+  }
+
+  .ec-footer__list--social, .ec-footer__quote {
+    border-top: 1px solid var(--color-moscow);
+    border-bottom: 1px solid var(--color-moscow);
+  }
+
+  .ec-footer__list--social, .ec-footer__list--economist {
+    padding: var(--grid-spacing-l) 0;
+  }
+
+  .ec-footer__quote {
+    padding: var(--grid-spacing-l) 0;
+  }
+
+  .ec-footer__footnote {
+    font-size: .8em;
+  }
+
+  .ec-footer__footnote .ec-list {
+    padding: var(--grid-spacing-m) 0;
+  }
+
+  .ec-footer__copyright {
+    padding-top: var(--grid-spacing-m);
+    border-top: 1px solid var(--color-moscow);
+  }
+}
+
+@media (min-width: 800px) {
+  .ec-footer {
+    border-top: .6em solid var(--color-economist);
+    background-color: var(--color-beijing);
+    padding: 0 var(--grid-gutter-l);
+    color: var(--color-london);
+  }
+
+  .ec-footer__list--subs .ec-footer__link {
+    font-weight: 700;
+  }
+
+  .ec-footer__menu {
+    display: flex;
+    border-bottom: 1px solid var(--color-moscow);
+  }
+
+  .ec-footer__menu, .ec-footer__quote {
+    padding: 3.5rem 0;
+  }
+
+  .ec-footer__header {
+    color: var(--color-moscow);
+    line-height: 3em;
+  }
+
+  .ec-footer__list:first-child {
+    padding-left: 0;
+  }
+
+  .ec-footer__list--subs {
+    padding-right: 2rem;
+  }
+
+  .ec-footer__list--social {
+    border-left: 1px solid var(--color-moscow);
+    border-right: 1px solid var(--color-moscow);
+    padding: 0 2rem;
+    flex: 1 0 0;
+  }
+
+  .ec-footer__list--economist {
+    padding-left: 2rem;
+    flex: 0 1 30%;
+  }
+
+  .ec-footer__list--economist .ec-list {
+    flex-wrap: wrap;
+    display: flex;
+  }
+
+  .ec-footer__list--economist .ec-list__item {
+    overflow: hidden;
+    white-space: nowrap;
+    flex: 1 0 50%;
+  }
+
+  .ec-footer__list--social .ec-list {
+    display: flex;
+  }
+
+  .ec-footer__footnote {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--color-moscow);
+    padding-bottom: 2rem;
+  }
+
+  .ec-footer__footnote .ec-list {
+    align-content: left;
+    display: flex;
+  }
+
+  .ec-footer__footnote .ec-list__item {
+    padding: 0 1em;
+  }
+
+  .ec-footer__footnote .ec-list__item:first-child {
+    padding-left: 0;
+  }
+
+  .ec-footer__copyright {
+    line-height: 3em;
+  }
+}
