@@ -31,9 +31,6 @@
 }
 
 .ec-footer__link--icon {
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 .ec-footer__list--subs .ec-list__item,
@@ -60,8 +57,7 @@
 }
 
 .ec-footer__list--social .icon {
-  width: 100%;
-  height: 100%;
+  font-size: 3em;
 }
 
 .ec-footer__quote {
