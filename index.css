@@ -30,9 +30,6 @@
   color: var(--color-london);
 }
 
-.ec-footer__link--icon {
-}
-
 .ec-footer__list--subs .ec-list__item,
 .ec-footer__list--economist .ec-list__item,  {
   line-height: 2em;
