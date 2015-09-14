@@ -1,6 +1,5 @@
 import React from 'react';
 import List from '@economist/component-list';
-import Icon from '@economist/component-icon';
 
 function renderListContent(array) {
   return array.map((item) => {
@@ -9,10 +8,14 @@ function renderListContent(array) {
 }
 function renderSocialListContent(array) {
   return array.map((item) => {
+    const className = [
+      'icon',
+      `icon--${item.type}-london`,
+      'ec-footer__link',
+      'ec-footer__link--icon',
+    ];
     return (
-      <Icon icon={item.type}>
-        <a {...item} className="ec-footer__link ec-footer__link--icon">{item.text}</a>
-      </Icon>
+      <a href={item.href} title={item.title} className={className.join(' ')}>{item.text}</a>
     );
   });
 }
@@ -31,7 +34,7 @@ export default class Footer extends React.Component {
       __html: `Published since September 1843 to take part inspect "<em>a severe contest between intelligence, which presses forward and an unworthy, timing ignorance obstructing our progress.</em>`,
     }
     const quote = (
-      <p className="ec-footer__quote" dangerouslySetInnerHTML={html} />
+      <p dangerouslySetInnerHTML={html} />
     );
     /*eslint-enable */
 
@@ -57,7 +60,7 @@ export default class Footer extends React.Component {
             </List>
           </div>
         </div>
-        <div>{quote}</div>
+        <div className="ec-footer__quote">{quote}</div>
         <div className="ec-footer__footnote">
           <List className="ec-footer__list">
             {renderListContent(context.business)}
