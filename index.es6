@@ -26,9 +26,14 @@ export default class Footer extends React.Component {
   }
 
   render() {
-    const quote = {
+    /*eslint-disable */
+    const html = {
       __html: `Published since September 1843 to take part inspect "<em>a severe contest between intelligence, which presses forward and an unworthy, timing ignorance obstructing our progress.</em>`,
-    };
+    }
+    const quote = (
+      <p className="ec-footer__quote" dangerouslySetInnerHTML={html} />
+    );
+    /*eslint-enable */
 
     const context = this.props.data;
     return (
@@ -52,9 +57,7 @@ export default class Footer extends React.Component {
             </List>
           </div>
         </div>
-        <div>
-          <p className="ec-footer__quote" dangerouslySetInnerHTML={quote} />
-        </div>
+        <div>{quote}</div>
         <div className="ec-footer__footnote">
           <List className="ec-footer__list">
             {renderListContent(context.business)}
