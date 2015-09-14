@@ -12,7 +12,6 @@ function renderSocialListContent(array) {
       'icon',
       `icon--${item.type}-london`,
       'ec-footer__link',
-      'ec-footer__link--icon',
     ];
     return (
       <a href={item.href} title={item.title} className={className.join(' ')}>{item.text}</a>
