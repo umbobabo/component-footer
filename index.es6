@@ -1,14 +1,19 @@
 import React from 'react';
 import List from '@economist/component-list';
+import Icon from '@economist/component-icon';
 
 function renderListContent(array) {
-  return array.map(function renderListLink(item) {
+  return array.map((item) => {
     return <a className="ec-footer__link" {...item}>{item.text}</a>;
   });
 }
 function renderSocialListContent(array) {
-  return array.map(function renderListLink(item) {
-    return <a {...item} className="ec-footer__link ec-footer__link--icon">{item.text}</a>;
+  return array.map((item) => {
+    return (
+      <Icon icon={item.type}>
+        <a {...item} className="ec-footer__link ec-footer__link--icon">{item.text}</a>
+      </Icon>
+    );
   });
 }
 export default class Footer extends React.Component {
@@ -22,10 +27,8 @@ export default class Footer extends React.Component {
 
   render() {
     const quote = {
-      __html: 'Published since September 1843 to take part inspect "' +
-        '<em>a severe contest between intelligence, which presses forward' +
-        'and an unworthy, timing ignorance obstructing our progress.</em>',
-      };
+      __html: `Published since September 1843 to take part inspect "<em>a severe contest between intelligence, which presses forward and an unworthy, timing ignorance obstructing our progress.</em>`,
+    };
 
     const context = this.props.data;
     return (
@@ -50,7 +53,7 @@ export default class Footer extends React.Component {
           </div>
         </div>
         <div>
-          <p className="ec-footer__quote" dangerouslySetInnerHTML={ quote } />
+          <p className="ec-footer__quote" dangerouslySetInnerHTML={quote} />
         </div>
         <div className="ec-footer__footnote">
           <List className="ec-footer__list">

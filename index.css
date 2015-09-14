@@ -29,7 +29,8 @@ ul, ul li, p, h4, a { padding: 0; margin: 0; list-style-type: none; text-decorat
   color: var(--color-london);
 }
 
-.ec-footer .ec-list__item {
+.ec-footer__list--subs .ec-list__item,
+.ec-footer__list--economist .ec-list__item,  {
   line-height: 2em;
   white-space: nowrap;
   overflow: hidden;
@@ -42,15 +43,18 @@ ul, ul li, p, h4, a { padding: 0; margin: 0; list-style-type: none; text-decorat
 
 .ec-footer__list--social .ec-list {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+.ec-footer__list--social .Icon {
+  height: 100%;
+  fill: var(--color-london);
+  width: 100%;
 }
 
 .ec-footer__list--social .ec-list__item {
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
   display: block;
-  flex: 1 0 0;
+  flex: 0 1 3em;
 }
 
 .ec-footer__quote {
@@ -86,8 +90,13 @@ ul, ul li, p, h4, a { padding: 0; margin: 0; list-style-type: none; text-decorat
     flex: 1 0 50%;
   }
 
-  .ec-footer__list--social, .ec-footer__quote {
+  .ec-footer__list--social,
+  .ec-footer__footnote {
     border-top: 1px solid var(--color-moscow);
+  }
+
+  .ec-footer__list--social,
+  .ec-footer__menu {
     border-bottom: 1px solid var(--color-moscow);
   }
 

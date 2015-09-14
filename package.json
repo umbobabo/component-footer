@@ -36,7 +36,6 @@
       "cmd": "babel-node -p \"require('react').renderToString(require('./example'))\""
     },
     "css": [
-      "./index.css",
       {
         "src": "./node_modules/mocha/mocha.css"
       },
