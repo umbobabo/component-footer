@@ -8,7 +8,7 @@ exec docker run \
     mhart/alpine-node \
     /bin/sh -c "\
         cd /code && \
-        NPM_TOKEN=${NPM_TOKEN} npm i && \
+        NPM_TOKEN=${NPM_TOKEN} npm i --unsafe-perm && \
         SAUCE_ACCESS_KEY=${SAUCE_ACCESS_KEY} npm t && \
         { [[ \"$(git rev-parse --abbrev-ref HEAD)\" == \"master\" ]] && npm run pages; } \
     ";
