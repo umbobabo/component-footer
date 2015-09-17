@@ -30,7 +30,7 @@ export default class Footer extends React.Component {
   render() {
     /*eslint-disable */
     const html = {
-      __html: `Published since September 1843 to take part inspect "<em>a severe contest between intelligence, which presses forward and an unworthy, timing ignorance obstructing our progress.</em>`,
+      __html: `Published since September 1843 to take part in<br/>“<em>a severe contest between intelligence, which presses forward,<br/>and an unworthy, timid ignorance obstructing our progress.”</em>`,
     }
     const quote = (
       <p dangerouslySetInnerHTML={html} />
