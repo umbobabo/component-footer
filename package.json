@@ -124,7 +124,6 @@
     "watch": "parallelshell 'npm run doc:watch' 'npm run prepublish:watch' 'npm run serve'"
   },
   "dependencies": {
-    "@economist/component-devpack": "3.3.1",
     "@economist/component-grid": "economist-components/component-grid",
     "@economist/component-icon": "^3.2.0",
     "@economist/component-list": "economist-components/component-list",
@@ -137,7 +136,7 @@
     "react": "^0.13.3"
   },
   "devDependencies": {
-    "@economist/component-devpack": "^3.1.7",
+    "@economist/component-devpack": "^3.3.1",
     "@economist/component-navigation": "^1.0.0",
     "babel": "^5.8.23",
     "babelify": "^6.3.0",

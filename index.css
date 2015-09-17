@@ -76,7 +76,7 @@
 @media (max-width: 800px) {
 
   .ec-footer__list--subs {
-    padding-bottom: var(--grid-spacing-m);
+    padding-bottom: var(--grid-spacing-sloth);
   }
 
   .ec-footer__list--subs .list,
@@ -103,11 +103,11 @@
   }
 
   .ec-footer__list--social, .ec-footer__list--economist {
-    padding: var(--grid-spacing-l) 0;
+    padding: var(--grid-spacing-rhino) 0;
   }
 
   .ec-footer__quote {
-    padding: var(--grid-spacing-l) 0;
+    padding: var(--grid-spacing-rhino) 0;
   }
 
   .ec-footer__footnote {
@@ -115,11 +115,11 @@
   }
 
   .ec-footer__footnote .list {
-    padding: var(--grid-spacing-m) 0;
+    padding: var(--grid-spacing-sloth) 0;
   }
 
   .ec-footer__copyright {
-    padding-top: var(--grid-spacing-m);
+    padding-top: var(--grid-spacing-sloth);
     border-top: 1px solid var(--color-moscow);
   }
 }
