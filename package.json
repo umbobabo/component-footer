@@ -97,7 +97,7 @@
   "config": {
     "lint_opts": "--ignore-path .gitignore --ext .es6",
     "testbundle_opts": "-r react -r .:./index.es6 -r ./example.js:example ./test/index.js -o testbundle.js",
-    "ghpages_files": "*.html *.css *.js assets/"
+    "ghpages_files": "*.html *.css *.js"
   },
   "scripts": {
     "build": "babel index.es6 --stage=0 --loose > index.js",
