@@ -30,8 +30,8 @@
   color: var(--color-london);
 }
 
-.ec-footer__list--subs .ec-list__item,
-.ec-footer__list--economist .ec-list__item,  {
+.ec-footer__list--subs .list__item,
+.ec-footer__list--economist .list__item,  {
   line-height: 2em;
   white-space: nowrap;
   overflow: hidden;
@@ -42,13 +42,13 @@
   font-weight: 700;
 }
 
-.ec-footer__list--social .ec-list {
+.ec-footer__list--social .list {
   display: flex;
   max-height: 3em;
   justify-content: flex-start;
 }
 
-.ec-footer__list--social .ec-list__item {
+.ec-footer__list--social .list__item {
   display: block;
   flex: 0 1 3em;
 }
@@ -79,16 +79,16 @@
     padding-bottom: var(--grid-spacing-m);
   }
 
-  .ec-footer__list--subs .ec-list,
-  .ec-footer__list--economist .ec-list,
-  .ec-footer__footnote .ec-list{
+  .ec-footer__list--subs .list,
+  .ec-footer__list--economist .list,
+  .ec-footer__footnote .list{
     display: flex;
     flex-wrap: wrap;
   }
 
-  .ec-footer__list--subs .ec-list__item,
-  .ec-footer__list--economist .ec-list__item,
-  .ec-footer__footnote .ec-list__item {
+  .ec-footer__list--subs .list__item,
+  .ec-footer__list--economist .list__item,
+  .ec-footer__footnote .list__item {
     flex: 1 0 50%;
   }
 
@@ -114,7 +114,7 @@
     font-size: .8em;
   }
 
-  .ec-footer__footnote .ec-list {
+  .ec-footer__footnote .list {
     padding: var(--grid-spacing-m) 0;
   }
 
@@ -170,18 +170,18 @@
     flex: 0 1 30%;
   }
 
-  .ec-footer__list--economist .ec-list {
+  .ec-footer__list--economist .list {
     flex-wrap: wrap;
     display: flex;
   }
 
-  .ec-footer__list--economist .ec-list__item {
+  .ec-footer__list--economist .list__item {
     overflow: hidden;
     white-space: nowrap;
     flex: 1 0 50%;
   }
 
-  .ec-footer__list--social .ec-list {
+  .ec-footer__list--social .list {
     display: flex;
   }
 
@@ -192,16 +192,16 @@
     padding-bottom: 2rem;
   }
 
-  .ec-footer__footnote .ec-list {
+  .ec-footer__footnote .list {
     align-content: left;
     display: flex;
   }
 
-  .ec-footer__footnote .ec-list__item {
+  .ec-footer__footnote .list__item {
     padding: 0 1em;
   }
 
-  .ec-footer__footnote .ec-list__item:first-child {
+  .ec-footer__footnote .list__item:first-child {
     padding-left: 0;
   }
 
