@@ -124,9 +124,9 @@
     "watch": "parallelshell 'npm run doc:watch' 'npm run prepublish:watch' 'npm run serve'"
   },
   "dependencies": {
-    "@economist/component-grid": "economist-components/component-grid",
+    "@economist/component-grid": "^1.1.0",
     "@economist/component-icon": "^3.2.0",
-    "@economist/component-list": "economist-components/component-list",
+    "@economist/component-list": "^1.0.0",
     "@economist/component-palette": "^1.0.1",
     "@economist/component-typography": "economist-components/component-typography",
     "lodash.clone": "^3.0.3",
