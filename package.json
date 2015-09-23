@@ -4,9 +4,9 @@
   "description": "Basic footer with follow bar",
   "author": "The Economist (http://economist.com)",
   "license": "ISC",
-  "repository": "git@github.com:the-economist-editorial/component-footer.git",
-  "homepage": "https://github.com/the-economist-editorial/component-footer/wiki",
-  "bugs": "https://github.com/the-economist-editorial/component-footer/issues",
+  "repository": "git@github.com:economist-components/component-footer.git",
+  "homepage": "https://github.com/economist-components/component-footer/wiki",
+  "bugs": "https://github.com/economist-components/component-footer/issues",
   "main": "index.js",
   "files": [
     "*.js",
