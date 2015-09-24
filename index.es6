@@ -51,7 +51,10 @@ export default class Footer extends React.Component {
             <List>
               {renderSocialListContent(context.social)}
             </List>
-            <a className="ec-footer__link" href="https://economist.com">Subscribe to our Newsletter</a>
+            <a className="ec-footer__link" href="https://economist.com">
+              <span className="ec-footer__subscribe-newsletter-icon icon icon--mail-london"></span>
+              Subscribe to our Newsletter
+            </a>
           </div>
           <div className="ec-footer__list ec-footer__list--economist">
             <List>

@@ -6,18 +6,50 @@
 @import '@economist/component-palette';
 @import '@economist/component-icon';
 
+@import '@economist/component-icon/backgrounds/close.css';
+@import '@economist/component-icon/backgrounds/down.css';
+@import '@economist/component-icon/backgrounds/economist-small.css';
+@import '@economist/component-icon/backgrounds/economist.css';
 @import '@economist/component-icon/backgrounds/facebook.css';
 @import '@economist/component-icon/backgrounds/googleplus.css';
+@import '@economist/component-icon/backgrounds/hamburger.css';
+@import '@economist/component-icon/backgrounds/home.css';
+@import '@economist/component-icon/backgrounds/left.css';
+@import '@economist/component-icon/backgrounds/linkedin.css';
+@import '@economist/component-icon/backgrounds/magnifier.css';
+@import '@economist/component-icon/backgrounds/mail.css';
+@import '@economist/component-icon/backgrounds/right.css';
+@import '@economist/component-icon/backgrounds/rss.css';
+@import '@economist/component-icon/backgrounds/share.css';
 @import '@economist/component-icon/backgrounds/twitter.css';
+@import '@economist/component-icon/backgrounds/up.css';
+@import '@economist/component-icon/backgrounds/user.css';
+@import '@economist/component-icon/backgrounds/whatsapp.css';
+@import '@economist/component-icon/backgrounds/worldif.css';
+
 
 .ec-footer {
-  font-size: .9em;
+  font-size: 1rem;
+  font-family: var(--fontfamily-body);
+  font-weight: normal;
   background-color: var(--color-beijing);
   border-top-color: var(--color-economist);
   border-top-style: solid;
   border-top-width: .4rem;
   padding: var(--grid-gutter-m);
   color: var(--color-london);
+}
+
+/* A couple of footer-specific resets */
+.ec-footer a:hover, .ec-footer a:focus { opacity: 0.6; }
+.ec-footer a:active { opacity: 0.3; }
+.ec-footer a { text-decoration: none; }
+.ec-footer ul { padding: 0; }
+.ec-footer li { list-style: none; }
+
+/* This makes the links have a bigger click area */
+.ec-footer a {
+  display: block;
 }
 
 .ec-footer__header {
@@ -50,11 +82,15 @@
 
 .ec-footer__list--social .list__item {
   display: block;
-  flex: 0 1 3em;
+  flex: 1;
 }
 
 .ec-footer__list--social .icon {
   font-size: 3em;
+}
+
+.ec-footer__subscribe-newsletter-icon {
+  vertical-align: middle;
 }
 
 .ec-footer__quote {
@@ -124,7 +160,7 @@
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 801px) {
   .ec-footer {
     border-top: .6em solid var(--color-economist);
     background-color: var(--color-beijing);
