@@ -89,6 +89,10 @@
   font-size: 3em;
 }
 
+.ec-footer__subscribe-newsletter-icon {
+  vertical-align: middle;
+}
+
 .ec-footer__quote {
   text-align: center;
   color: var(--color-moscow);
