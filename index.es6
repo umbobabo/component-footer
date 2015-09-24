@@ -10,7 +10,7 @@ function renderSocialListContent(array) {
   return array.map((item) => {
     const className = [
       'icon',
-      `icon--${item.type}-london`,
+      `icon--${item.meta}-london`,
       'ec-footer__link',
     ];
     return (
@@ -41,17 +41,17 @@ export default class Footer extends React.Component {
     return (
       <footer className="ec-footer">
         <div className="ec-footer__menu">
-          <div className="ec-footer__list ec-footer__list--subs">
-            <List>
-              {renderListContent(context.customer)}
-            </List>
-          </div>
           <div className="ec-footer__list ec-footer__list--social">
             <h4 className="ec-footer__header">Keep updated</h4>
             <List>
               {renderSocialListContent(context.social)}
             </List>
             <a className="ec-footer__link" href="https://economist.com">Subscribe to our Newsletter</a>
+          </div>
+          <div className="ec-footer__list ec-footer__list--subs">
+            <List>
+              {renderListContent(context.customer)}
+            </List>
           </div>
           <div className="ec-footer__list ec-footer__list--economist">
             <List>
