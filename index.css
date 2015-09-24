@@ -126,7 +126,7 @@
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 801px) {
   .ec-footer {
     border-top: .6em solid var(--color-economist);
     background-color: var(--color-beijing);
