@@ -40,6 +40,18 @@
   color: var(--color-london);
 }
 
+/* A couple of footer-specific resets */
+.ec-footer a:hover, .ec-footer a:focus { opacity: 0.6; }
+.ec-footer a:active { opacity: 0.3; }
+.ec-footer a { text-decoration: none; }
+.ec-footer ul { padding: 0; }
+.ec-footer li { list-style: none; }
+
+/* This makes the links have a bigger click area */
+.ec-footer a {
+  display: block;
+}
+
 .ec-footer__header {
   line-height: 2em;
   color: var(--color-moscow);
@@ -70,7 +82,7 @@
 
 .ec-footer__list--social .list__item {
   display: block;
-  flex: 0 1 3em;
+  flex: 1;
 }
 
 .ec-footer__list--social .icon {
