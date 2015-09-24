@@ -6,9 +6,27 @@
 @import '@economist/component-palette';
 @import '@economist/component-icon';
 
+@import '@economist/component-icon/backgrounds/close.css';
+@import '@economist/component-icon/backgrounds/down.css';
+@import '@economist/component-icon/backgrounds/economist-small.css';
+@import '@economist/component-icon/backgrounds/economist.css';
 @import '@economist/component-icon/backgrounds/facebook.css';
 @import '@economist/component-icon/backgrounds/googleplus.css';
+@import '@economist/component-icon/backgrounds/hamburger.css';
+@import '@economist/component-icon/backgrounds/home.css';
+@import '@economist/component-icon/backgrounds/left.css';
+@import '@economist/component-icon/backgrounds/linkedin.css';
+@import '@economist/component-icon/backgrounds/magnifier.css';
+@import '@economist/component-icon/backgrounds/mail.css';
+@import '@economist/component-icon/backgrounds/right.css';
+@import '@economist/component-icon/backgrounds/rss.css';
+@import '@economist/component-icon/backgrounds/share.css';
 @import '@economist/component-icon/backgrounds/twitter.css';
+@import '@economist/component-icon/backgrounds/up.css';
+@import '@economist/component-icon/backgrounds/user.css';
+@import '@economist/component-icon/backgrounds/whatsapp.css';
+@import '@economist/component-icon/backgrounds/worldif.css';
+
 
 .ec-footer {
   font-size: 1rem;
