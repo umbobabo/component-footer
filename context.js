@@ -48,41 +48,41 @@ export default {
   social: [
     {
       text: 'Facebook',
-      type: 'facebook',
+      meta: 'facebook',
       href: 'https://www.economist.com',
       className: 'facebook'
     },
     {
       title: 'Twitter',
       text: 'Twitter',
-      type: 'twitter',
+      meta: 'twitter',
       href: 'https://www.economist.com',
       className: 'twitter'
     },
     {
       text: 'Linked',
-      type: 'linkedin',
+      meta: 'linkedin',
       href: 'https://www.economist.com',
       className: 'linkedin'
     },
     {
       title: 'Google',
       text: 'Google',
-      type: 'googleplus',
+      meta: 'googleplus',
       href: 'https://www.economist.com',
       className: 'google'
     },
     {
       title: 'Tumblr',
       text: 'Tumblr',
-      type: 'tumblr',
+      meta: 'tumblr',
       href: 'https://www.economist.com',
       className: 'tumblr'
     },
     {
       title: 'Instagram',
       text: 'Instagram',
-      type: 'instagram',
+      meta: 'instagram',
       href: 'https://www.economist.com',
       className: 'instagram'
     },
