@@ -3,7 +3,7 @@ import List from '@economist/component-list';
 
 function renderListContent(array) {
   return array.map((item) => {
-    return <a className="ec-footer__link" {...item}>{item.text}</a>;
+    return <a className="ec-footer__link" {...item}>{item.title}</a>;
   });
 }
 function renderSocialListContent(array) {
@@ -14,7 +14,7 @@ function renderSocialListContent(array) {
       'ec-footer__link',
     ];
     return (
-      <a href={item.href} title={item.title} className={className.join(' ')}>{item.text}</a>
+      <a href={item.href} title={item.title} className={className.join(' ')}>{item.title}</a>
     );
   });
 }
