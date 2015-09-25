@@ -159,11 +159,11 @@
     "npm-watch": "0.0.1",
     "parallelshell": "^2.0.0",
     "pre-commit": "^1.0.10",
-    "react": "^0.13.3",
+    "react": "^0.14.0-rc",
     "watchify": "^3.4.0"
   },
   "peerDependencies": {
-    "react": "~0.13.3"
+    "react": "^0.14.0-rc"
   },
   "pre-commit": [
     "lint"
