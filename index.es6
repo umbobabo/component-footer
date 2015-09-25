@@ -1,5 +1,6 @@
 import React from 'react';
 import List from '@economist/component-list';
+import Icon from '@economist/component-icon';
 
 function renderListContent(array) {
   return array.map((item) => {
@@ -9,12 +10,12 @@ function renderListContent(array) {
 function renderSocialListContent(array) {
   return array.map((item) => {
     const className = [
-      'icon',
-      `icon--${item.meta}-london`,
       'ec-footer__link',
     ];
     return (
-      <a href={item.href} title={item.title} className={className.join(' ')}>{item.title}</a>
+      <a href={item.href} title={item.title} className={className.join(' ')}>
+        <Icon icon={item.meta} color="#B6B6B6" />
+      </a>
     );
   });
 }
@@ -30,7 +31,7 @@ export default class Footer extends React.Component {
   render() {
     /*eslint-disable */
     const html = {
-      __html: `Published since September 1843 to take part in<br/>“<em>a severe contest between intelligence, which presses forward,<br/>and an unworthy, timid ignorance obstructing our progress.”</em>`,
+      __html: `Published since September 1843 to take part in <br/><em>“a severe contest between intelligence, which presses forward,<br/>and an unworthy, timid ignorance obstructing our progress.”</em>`,
     }
     const quote = (
       <p dangerouslySetInnerHTML={html} />
@@ -52,7 +53,7 @@ export default class Footer extends React.Component {
               {renderSocialListContent(context.social)}
             </List>
             <a className="ec-footer__link" href="https://economist.com">
-              <span className="ec-footer__subscribe-newsletter-icon icon icon--mail-london"></span>
+              <Icon icon="mail" className="ec-footer__subscribe-newsletter-icon" color="#B6B6B6"/>
               Subscribe to our Newsletter
             </a>
           </div>
