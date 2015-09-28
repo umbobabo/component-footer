@@ -19,11 +19,16 @@
   color: var(--color-london);
 }
 
+.ec-footer__wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 /* A couple of footer-specific resets */
 .ec-footer a:hover, .ec-footer a:focus { opacity: 0.6; }
 .ec-footer a:active { opacity: 0.3; }
 .ec-footer a { text-decoration: none; }
-.ec-footer ul { padding: 0; }
+.ec-footer ul, .ec-footer p { padding: 0; margin: 0; }
 .ec-footer li { list-style: none; }
 
 /* This makes the links have a bigger click area */
@@ -31,6 +36,7 @@
   display: block;
 }
 
+/* TODO figure out line-height */
 .ec-footer__header {
   line-height: 2em;
   color: var(--color-moscow);
@@ -59,6 +65,10 @@
   justify-content: flex-start;
 }
 
+.ec-footer__list--social .ec-footer__header {
+  margin: 0;
+}
+
 .ec-footer__list--social .list__item {
   display: block;
   flex: 1;
@@ -82,8 +92,10 @@
   .ec-footer__quote br { display: none; }
 }
 
-.ec-footer__footnote {
-  font-size: .8em;
+.ec-footer__footnote .ec-footer__link,
+.ec-footer__copyright {
+  font-size: var(--text-size-step--2);
+  line-height: var(--text-line-height-body-on-step--2);
 }
 
 .ec-footer__copyright {
@@ -91,7 +103,7 @@
 }
 
 /* mobile only */
-@media (max-width: 800px) {
+@media (max-width: 900px) {
 
   .ec-footer__list--subs {
     padding-bottom: var(--grid-spacing-sloth);
@@ -138,7 +150,8 @@
   }
 }
 
-@media (min-width: 801px) {
+/* Desktop only */
+@media (min-width: 901px) {
   .ec-footer {
     border-top: .6em solid var(--color-economist);
     background-color: var(--color-beijing);
@@ -157,11 +170,6 @@
 
   .ec-footer__menu, .ec-footer__quote {
     padding: 3.5rem 0;
-  }
-
-  .ec-footer__header {
-    color: var(--color-moscow);
-    line-height: 3em;
   }
 
   .ec-footer__list:first-child {
@@ -190,7 +198,6 @@
   }
 
   .ec-footer__list--economist .list__item {
-    overflow: hidden;
     white-space: nowrap;
     flex: 1 0 50%;
   }
@@ -211,15 +218,17 @@
     display: flex;
   }
 
+  .ec-footer__footnote .ec-footer__link {
+    /* Exactly like the copyright */
+    font-size: var(--text-size-step--2);
+    line-height: var(--text-line-height-body-on-step--2);
+  }
+
   .ec-footer__footnote .list__item {
     padding: 0 1em;
   }
 
   .ec-footer__footnote .list__item:first-child {
     padding-left: 0;
-  }
-
-  .ec-footer__copyright {
-    line-height: 3em;
   }
 }
