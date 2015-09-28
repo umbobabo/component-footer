@@ -25,7 +25,7 @@ function renderNewsletterLink(social) {
   const newsletter = social.filter(({ meta }) => meta === 'mail')[0] || null;
   if (!newsletter) { return []; }
   return (
-    <a className="ec-footer__link" href={newsletter.href}>
+    <a className="ec-footer__link ec-footer__subscribe-newsletter-link" href={newsletter.href}>
       <Icon icon="mail" className="ec-footer__subscribe-newsletter-icon" color="#B6B6B6"/>
       {newsletter.title}
     </a>
@@ -46,7 +46,7 @@ export default class Footer extends React.Component {
       __html: `Published since September 1843 to take part in <br/><em>“a severe contest between intelligence, which presses forward,<br/>and an unworthy, timid ignorance obstructing our progress.”</em>`,
     }
     const quote = (
-      <p dangerouslySetInnerHTML={html} />
+      <p className="ec-footer__quote-paragraph" dangerouslySetInnerHTML={html} />
     );
     /*eslint-enable */
 

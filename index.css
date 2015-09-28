@@ -12,14 +12,16 @@
   font-family: var(--fontfamily-body);
   font-weight: normal;
   background-color: var(--color-beijing);
-  border-top-color: var(--color-economist);
-  border-top-style: solid;
-  border-top-width: .4rem;
-  padding: var(--grid-gutter-m);
+  border-top: var(--color-economist) solid .4rem;
+  padding: var(--grid-gutter-s);
+  padding-top: calc(var(--grid-spacing-camel) - calc(var(--grid-spacing-donkey) / 2));
+  padding-bottom: 0;
   color: var(--color-london);
 }
 
 .ec-footer__wrapper {
+  font-size: var(--text-size-step--1);
+  line-height: var(--text-line-height-body-on-step--1);
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -27,29 +29,35 @@
 /* A couple of footer-specific resets */
 .ec-footer a:hover, .ec-footer a:focus { opacity: 0.6; }
 .ec-footer a:active { opacity: 0.3; }
+.ec-footer ul { padding: 0; margin: 0; list-style: none; }
 .ec-footer a { text-decoration: none; }
-.ec-footer ul, .ec-footer p { padding: 0; margin: 0; }
-.ec-footer li { list-style: none; }
 
 /* This makes the links have a bigger click area */
 .ec-footer a {
   display: block;
 }
 
-/* TODO figure out line-height */
-.ec-footer__header {
-  line-height: 2em;
-  color: var(--color-moscow);
+.ec-footer__link {
+  color: var(--color-london);
 }
 
-.ec-footer__link {
-  line-height: 3em;
-  color: var(--color-london);
+.ec-footer__quote-paragraph {
+  margin: 0;
+}
+
+/* Standard spacing between pretty much everything :) */
+.ec-footer__list .list__item .ec-footer__link,
+.ec-footer__header,
+.ec-footer__quote-paragraph,
+.ec-footer__copyright,
+.ec-footer__subscribe-newsletter-link {
+  /* Divide by 2 because these are grids */
+  padding-top: calc(var(--grid-spacing-donkey) / 2);
+  padding-bottom: calc(var(--grid-spacing-donkey) / 2);
 }
 
 .ec-footer__list--subs .list__item,
 .ec-footer__list--economist .list__item,  {
-  line-height: 2em;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -61,11 +69,11 @@
 
 .ec-footer__list--social .list {
   display: flex;
-  max-height: 3em;
   justify-content: flex-start;
 }
 
 .ec-footer__list--social .ec-footer__header {
+  color: var(--color-moscow);
   margin: 0;
 }
 
@@ -74,17 +82,24 @@
   flex: 1;
 }
 
-.ec-footer__list--social .icon {
-  font-size: 3em;
+.ec-footer__list--social .list {
+  margin: calc(-0.25 * 60px);  /* Icons are 60px wide, and they have 25% spacing around them. Compensate for said spacing */
+}
+.ec-footer__list--social .list__item svg {
+  display: block;
 }
 
-.ec-footer__subscribe-newsletter-icon {
+.ec-footer .ec-footer__subscribe-newsletter-icon {
+  margin: calc(-0.25 * 60px) calc(calc(-0.25 * 60px) + 10px);
+  margin: calc(-0.25 * 60px) calc(calc(-0.25 * 60px) + var(--grid-spacing-rabbit));
   vertical-align: middle;
 }
 
 .ec-footer__quote {
   text-align: center;
   color: var(--color-moscow);
+  font-size: var(--text-size-step-1);
+  line-height: var(--text-line-height-body-on-step-1);
   margin: auto;
 }
 
@@ -92,61 +107,48 @@
   .ec-footer__quote br { display: none; }
 }
 
-.ec-footer__footnote .ec-footer__link,
-.ec-footer__copyright {
+.ec-footer__footnote .ec-footer__copyright {
   font-size: var(--text-size-step--2);
   line-height: var(--text-line-height-body-on-step--2);
+  color: var(--color-moscow);
 }
 
-.ec-footer__copyright {
-  color: var(--color-moscow);
+.ec-footer__list--subs .list,
+.ec-footer__list--economist .list,
+.ec-footer__footnote .list{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ec-footer__list--subs .list__item,
+.ec-footer__list--economist .list__item,
+.ec-footer__footnote .list__item {
+  flex: 1 0 50%;
 }
 
 /* mobile only */
 @media (max-width: 900px) {
-
-  .ec-footer__list--subs {
-    padding-bottom: var(--grid-spacing-sloth);
-  }
-
-  .ec-footer__list--subs .list,
-  .ec-footer__list--economist .list,
-  .ec-footer__footnote .list{
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .ec-footer__list--subs .list__item,
-  .ec-footer__list--economist .list__item,
-  .ec-footer__footnote .list__item {
-    flex: 1 0 50%;
-  }
-
   .ec-footer__list--social,
-  .ec-footer__footnote {
+  .ec-footer__list--economist,
+  .ec-footer__quote,
+  .ec-footer__footnote,
+  .ec-footer__copyright {
     border-top: 1px solid var(--color-moscow);
   }
 
+  /* Vertical spacing */
   .ec-footer__list--social,
-  .ec-footer__menu {
-    border-bottom: 1px solid var(--color-moscow);
-  }
-
-  .ec-footer__list--social, .ec-footer__list--economist {
-    padding: var(--grid-spacing-rhino) 0;
-  }
-
-  .ec-footer__quote {
-    padding: var(--grid-spacing-rhino) 0;
-  }
-
-  .ec-footer__footnote .list {
-    padding: var(--grid-spacing-sloth) 0;
+  .ec-footer__list--economist,
+  .ec-footer__quote,
+  .ec-footer__footnote {
+    margin-top: calc(var(--grid-spacing-camel) - calc(var(--grid-spacing-donkey) / 2));
+    padding-top: calc(var(--grid-spacing-camel) - calc(var(--grid-spacing-donkey) / 2));
   }
 
   .ec-footer__copyright {
-    padding-top: var(--grid-spacing-sloth);
-    border-top: 1px solid var(--color-moscow);
+    margin: 0;
+    margin-top: calc(var(--grid-spacing-camel) - calc(var(--grid-spacing-donkey) / 2));
+    padding: var(--grid-spacing-sheep) 0;
   }
 }
 
@@ -169,7 +171,7 @@
   }
 
   .ec-footer__menu, .ec-footer__quote {
-    padding: 3.5rem 0;
+    padding: var(--grid-spacing-rhino) 0;
   }
 
   .ec-footer__list:first-child {
@@ -200,10 +202,6 @@
   .ec-footer__list--economist .list__item {
     white-space: nowrap;
     flex: 1 0 50%;
-  }
-
-  .ec-footer__list--social .list {
-    display: flex;
   }
 
   .ec-footer__footnote {
