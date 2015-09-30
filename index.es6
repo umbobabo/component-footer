@@ -2,6 +2,12 @@ import React from 'react';
 import List from '@economist/component-list';
 import Icon from '@economist/component-icon';
 
+function targetIfNeeded({ internal }) {
+  if (internal === false) {
+    return { target: '_blank' };
+  }
+  return {};
+}
 function renderListContent(array) {
   return array.map((item) => {
     if (item.internal === false) {
@@ -17,9 +23,8 @@ function renderSocialListContent(array) {
     const className = [
       'ec-footer__link',
     ];
-    const targetIfNeeded = item.internal === false ? { target: '_blank' } : { /* No target attribute at all */ };
     return (
-      <a href={item.href} title={item.title} className={className.join(' ')} {...targetIfNeeded}>
+      <a href={item.href} title={item.title} className={className.join(' ')} {...targetIfNeeded(item)}>
         <Icon icon={item.meta} color="#B6B6B6" />
       </a>
     );
@@ -28,9 +33,8 @@ function renderSocialListContent(array) {
 function renderNewsletterLink(social) {
   const newsletter = social.filter(({ meta }) => meta === 'mail')[0] || null;
   if (!newsletter) { return []; }
-  const targetIfNeeded = newsletter.internal === false ? { target: '_blank' } : { /* No target attribute at all */ };
   return (
-    <a className="ec-footer__link ec-footer__subscribe-newsletter-link" href={newsletter.href} {...targetIfNeeded}>
+    <a className="ec-footer__link ec-footer__subscribe-newsletter-link" href={newsletter.href} {...targetIfNeeded(newsletter)}>
       <Icon icon="mail" className="ec-footer__subscribe-newsletter-icon" color="#B6B6B6"/>
       {newsletter.title}
     </a>
