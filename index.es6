@@ -4,7 +4,10 @@ import Icon from '@economist/component-icon';
 
 function renderListContent(array) {
   return array.map((item) => {
-    return <a className="ec-footer__link" {...item}>{item.title}</a>;
+    if (item.internal === false) {
+      return <a className="ec-footer__link ec-footer__link--external" href={item.href} target="_blank">{item.title}</a>
+    }
+    return <a className="ec-footer__link" href={item.href}>{item.title}</a>;
   });
 }
 function renderSocialListContent(array) {
@@ -14,8 +17,9 @@ function renderSocialListContent(array) {
     const className = [
       'ec-footer__link',
     ];
+    const targetIfNeeded = item.internal === false ? { target: '_blank' } : { /* No target attribute at all */ };
     return (
-      <a href={item.href} title={item.title} className={className.join(' ')}>
+      <a href={item.href} title={item.title} className={className.join(' ')} {...targetIfNeeded}>
         <Icon icon={item.meta} color="#B6B6B6" />
       </a>
     );
@@ -24,8 +28,9 @@ function renderSocialListContent(array) {
 function renderNewsletterLink(social) {
   const newsletter = social.filter(({ meta }) => meta === 'mail')[0] || null;
   if (!newsletter) { return []; }
+  const targetIfNeeded = newsletter.internal === false ? { target: '_blank' } : { /* No target attribute at all */ };
   return (
-    <a className="ec-footer__link ec-footer__subscribe-newsletter-link" href={newsletter.href}>
+    <a className="ec-footer__link ec-footer__subscribe-newsletter-link" href={newsletter.href} {...targetIfNeeded}>
       <Icon icon="mail" className="ec-footer__subscribe-newsletter-icon" color="#B6B6B6"/>
       {newsletter.title}
     </a>
