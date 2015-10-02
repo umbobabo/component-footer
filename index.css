@@ -6,6 +6,11 @@
 @import '@economist/component-palette';
 @import '@economist/component-icon';
 
+:root {
+  --icon-canvas-size: 60px;
+  --icon-size: 30px;
+  --icon-blank-space: calc(0.25 * 60px);
+}
 
 .ec-footer {
   font-size: 1rem;
@@ -73,12 +78,12 @@
 }
 
 .ec-footer__list--social .list__item {
-  width: calc(0.5 * 60px * 2); /* Icons have a fixed spacing */
+  width: calc(var(--icon-size) * 2);  /* Icons are always spaced by 1 icon apart */
   display: inline-block;
 }
 
 .ec-footer__list--social .list {
-  margin: calc(-0.25 * 60px);  /* Icons are 60px wide, and they have 25% spacing around them. Compensate for said spacing */
+  margin: calc(-1 * var(--icon-blank-space));
 }
 .ec-footer__list--social .list__item svg {
   display: block;
@@ -86,8 +91,8 @@
 }
 
 .ec-footer .ec-footer__subscribe-newsletter-icon {
-  margin: calc(-0.25 * 60px);
-  margin-right: calc(calc(-0.25 * 60px) + var(--grid-spacing-rabbit));
+  margin: calc(-1 * var(--icon-blank-space));
+  margin-right: calc(calc(-1 * var(--icon-blank-space)) + var(--grid-spacing-rabbit));
   vertical-align: middle;
 }
 
@@ -214,7 +219,7 @@
   }
 
   .ec-footer__list--social .list {
-    margin-right: calc(-0.25 * 60px * 3);  /* So that the last icon does not jump to the next line*/
+    margin-right: calc(-1 * var(--icon-blank-space) * 3);  /* So that the last icon does not jump to the next line*/
   }
 
   .ec-footer__list--economist {
