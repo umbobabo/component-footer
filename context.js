@@ -72,6 +72,12 @@ export default {
       href: 'https://www.economist.com',
       internal: false,
     },
+    {
+      title: 'mail',
+      meta: 'mail',
+      href: 'https://www.economist.com',
+      internal: true,
+    },
   ],
   business: [
     {
