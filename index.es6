@@ -82,9 +82,11 @@ export default class Footer extends React.Component {
           </div>
           <div className="ec-footer__quote">{quote}</div>
           <div className="ec-footer__footnote">
-            <List className="ec-footer__list">
-              {this.renderListContent(context.business)}
-            </List>
+            <div className="ec-footer__list ec-footer__list--footnote">
+              <List>
+                {this.renderListContent(context.business)}
+              </List>
+            </div>
             <p className="ec-footer__copyright">Copyright © The Economist Newspaper Limited 2005. All rights reserved.</p>
           </div>
         </div>

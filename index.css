@@ -61,10 +61,22 @@
   padding-bottom: calc(var(--grid-spacing-donkey) / 2);
 }
 
+/* So kind of everything is going to have inline-block and be in 2 columns */
+.ec-footer .list__item {
+  display: inline-block;
+  width: 50%;
+}
+/* Tablet means 4 columns pretty much everywhere */
+@media screen and (min-width: 650px) and (max-width: 1000px) {
+  .ec-footer .list__item { width: 25%; }
+}
+
+
+/* This makes sure that they stretch for flex to pick them up*/
 .ec-footer__list--subs .list__item,
-.ec-footer__list--economist .list__item,  {
+.ec-footer__list--footnote .list__item,
+.ec-footer__list--economist .list__item {
   white-space: nowrap;
-  overflow: hidden;
 }
 
 .ec-footer__list--subs .ec-footer__link {
@@ -79,7 +91,6 @@
 
 .ec-footer__list--social .list__item {
   width: calc(var(--icon-size) * 2);  /* Icons are always spaced by 1 icon apart */
-  display: inline-block;
 }
 
 .ec-footer__list--social .list {
@@ -118,79 +129,34 @@
   color: var(--color-moscow);
 }
 
-.ec-footer__list--subs .list,
-.ec-footer__list--economist .list,
-.ec-footer__footnote .list{
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.ec-footer__list--subs .list__item,
-.ec-footer__list--economist .list__item {
-  flex: 1 0 50%;
-}
-
 /* mobile only */
 @media (max-width: 1000px) {
   .ec-footer__list--social,
   .ec-footer__list--economist,
   .ec-footer__quote,
-  .ec-footer__footnote,
-  .ec-footer__copyright {
-    border-top: 1px solid var(--color-moscow);
-  }
-
-  /* Vertical spacing */
-  .ec-footer__list--social,
-  .ec-footer__list--economist,
-  .ec-footer__quote,
   .ec-footer__footnote {
+    border-top: 1px solid var(--color-moscow);
     margin-top: calc(var(--grid-spacing-camel) - calc(var(--grid-spacing-donkey) / 2));
     padding-top: calc(var(--grid-spacing-camel) - calc(var(--grid-spacing-donkey) / 2));
   }
 
   .ec-footer__copyright {
-    margin: 0;
-    margin-top: calc(var(--grid-spacing-camel) - calc(var(--grid-spacing-donkey) / 2));
+    margin: calc(var(--grid-spacing-camel) - calc(var(--grid-spacing-donkey) / 2)) 0 0 0;
     padding: var(--grid-spacing-sheep) 0;
-  }
-  .ec-footer__footnote .ec-footer__list .list__item {  /* TODO reduce specificity of this one */
-    width: 50%;
-  }
-}
-
-/* Tablet */
-@media (min-width: 650px) {
-  .ec-footer__list--subs .list__item,
-  .ec-footer__list--economist .list__item {
-    flex: 1 0 25%;
-  }
-
-  .ec-footer__footnote .ec-footer__list .list__item {
-    width: 25%;
+    border-top: 1px solid var(--color-moscow);
   }
 }
 
 /* Desktop only */
-@media (min-width: 1001px) {
+@media screen and (min-width: 1001px) {
   .ec-footer {
-    border-top: .6em solid var(--color-economist);
-    background-color: var(--color-beijing);
+    border-top-width: .6em;
     padding: 0 var(--grid-gutter-l);
-    color: var(--color-london);
   }
 
   .ec-footer__menu {
     display: flex;
   }
-  .ec-footer__list--subs {
-    font-weight: 700;
-    display: block;
-  }
-  .ec-footer__list--list {
-    display: block;
-  }
-
   /* Vertical spacing overrides */
   .ec-footer__menu {
     margin: var(--grid-spacing-camel) 0;
@@ -200,16 +166,25 @@
     border-top: 1px solid var(--color-moscow);
   }
 
-  .ec-footer__list:first-child {
-    padding-left: 0;
+  /* footnote and copyright go side by side */
+  .ec-footer__footnote {
+    display: flex;
+  }
+  .ec-footer__copyright {
+    flex: 1;
+    text-align: right;
   }
 
   .ec-footer__list {
     padding: 0 var(--grid-spacing-donkey);
   }
+  .ec-footer__list--footnote {
+    padding: 0;
+  }
 
-  .ec-footer__list--subs .list {
+  .ec-footer__list--subs .list__item {
     display: block;
+    width: auto;
   }
 
   .ec-footer__list--social {
@@ -226,27 +201,6 @@
     flex: 0 1 30%;
   }
 
-  .ec-footer__list--economist .list {
-    flex-wrap: wrap;
-    display: flex;
-  }
-
-  .ec-footer__list--economist .list__item {
-    white-space: nowrap;
-    width: auto;
-    flex: 1 0 50%;
-  }
-
-  .ec-footer__footnote {
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid var(--color-moscow);
-  }
-
-  .ec-footer__footnote .list {
-    display: block;
-  }
-
   .ec-footer__footnote .ec-footer__link,
   .ec-footer__footnote .ec-footer__copyright {
     font-size: var(--text-size-step--2);
@@ -255,23 +209,10 @@
 
   .ec-footer__footnote .list__item {
     padding-right: var(--grid-spacing-fox);
-    float: left;
-  }
-  .ec-footer__footnote .list .list__item {  /* TODO when specificity of previously TODO'ed selector is reduced, reduce this one's*/
     width: auto;
   }
-
   .ec-footer__footnote .list__item:last-child {
     padding-right: 0;
-  }
-
-  .ec-footer__copyright {
-    margin-top: 0;
-    float: right;
-  }
-
-  .ec-footer__footnote .list__item:first-child {
-    padding-left: 0;
   }
 }
 
