@@ -101,7 +101,7 @@
     "ghpages_files": "*.html *.css *.js"
   },
   "scripts": {
-    "build": "babel index.es6 --stage=0 --loose > index.js",
+    "build": "babel index.es6 --stage=0 --loose --ignore node_modules > index.js",
     "ci": "./build.sh",
     "doc": "parallelshell 'npm run doc:html' 'npm run doc:js' 'npm run doc:css'",
     "doc:css": "cssnext --sourcemap index.css bundle.css",
