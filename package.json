@@ -129,11 +129,7 @@
     "@economist/component-icon": "^3.2.0",
     "@economist/component-list": "^1.0.0",
     "@economist/component-palette": "^1.0.1",
-    "@economist/component-typography": "^1.4.3",
-    "lodash.clone": "^3.0.3",
-    "lodash.defaults": "^3.1.2",
-    "lodash.omit": "^3.1.0",
-    "lodash.some": "^3.2.3"
+    "@economist/component-typography": "^1.4.3"
   },
   "devDependencies": {
     "@economist/component-devpack": "^3.4.2",
@@ -159,11 +155,11 @@
     "npm-watch": "0.0.1",
     "parallelshell": "^2.0.0",
     "pre-commit": "^1.0.10",
-    "react": "^0.14.0-rc",
+    "react": "^0.14.0",
     "watchify": "^3.4.0"
   },
   "peerDependencies": {
-    "react": "^0.14.0-rc"
+    "react": "^0.14.0"
   },
   "pre-commit": [
     "lint"
