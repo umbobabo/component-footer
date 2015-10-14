@@ -12,6 +12,10 @@
   --icon-blank-space: calc(0.25 * 60px);
 }
 
+.ec-footer * {
+  box-sizing: border-box;
+}
+
 .ec-footer {
   font-size: 1rem;
   font-family: var(--fontfamily-body);
@@ -27,7 +31,7 @@
 .ec-footer__wrapper {
   font-size: var(--text-size-step--1);
   line-height: var(--text-line-height-body-on-step--1);
-  max-width: 1000px;
+  max-width: var(--site-max-width, 1000px);
   margin: 0 auto;
 }
 
