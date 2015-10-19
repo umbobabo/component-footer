@@ -156,7 +156,6 @@
     "parallelshell": "^2.0.0",
     "pre-commit": "^1.0.10",
     "react": "^0.14.0",
-    "sinon": "^1.17.1",
     "watchify": "^3.4.0"
   },
   "peerDependencies": {

@@ -2,7 +2,6 @@ import Footer from '../index.es6';
 import List from '@economist/component-list';
 import Icon from '@economist/component-icon';
 import React from 'react/addons';
-import sinon from 'sinon';
 
 describe(`A Footer`, () => {
   describe(`it's a React component`, () => {
