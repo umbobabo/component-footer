@@ -25,54 +25,78 @@ describe(`A Footer`, () => {
       footer = new Footer({ data: basicData });
     });
     it('Calls its renderListContent and renderSocialListContent with the correct parameters', () => {
-      sinon.spy(footer, 'renderListContent');
-      sinon.spy(footer, 'renderSocialListContent');
+      chai.spy.on(footer, 'renderListContent');
+      chai.spy.on(footer, 'renderSocialListContent');
 
       footer.render();
 
-      footer.renderListContent.called.should.equal(true);
-      footer.renderSocialListContent.calledOnce.should.equal(true);
+      footer.renderListContent.should.have.been.called();
+      footer.renderSocialListContent.should.have.been.called.exactly(1);
 
-      footer.renderListContent.calledWith(basicData.customer).should.equal(true);
-      footer.renderListContent.calledWith(basicData.economist).should.equal(true);
-      footer.renderListContent.calledWith(basicData.business).should.equal(true);
-      footer.renderSocialListContent.calledWith(basicData.social).should.equal(true);
+      footer.renderListContent.should.have.been.called.with(basicData.customer);
+      footer.renderListContent.should.have.been.called.with(basicData.economist);
+      footer.renderListContent.should.have.been.called.with(basicData.business);
+      footer.renderSocialListContent.should.have.been.called.with(basicData.social)
     });
-    ['renderListContent', 'renderSocialListContent'].forEach((func) => {
-      describe(func, () => {
-        it('Returns an array of <a> tags', () => {
-          const links = footer[func]([{
+    describe('renderSocialListContent', () => {
+      it('Removes any item with the mail attribute and calls renderListContent with useIcons:true', () => {
+        chai.spy.on(footer, 'renderListContent');
+        const socialLinks = footer.renderSocialListContent([
+          {
+            href: 'http://example.com/1',
+            title: '1',
+            meta: 'one',
+          },
+          {
+            href: 'http://example.com/2',
+            title: '2',
+            meta: 'mail',
+          },
+          {
+            href: 'http://example.com/3',
+            title: 2,
+            meta: 'three',
+          }
+        ]);
+        footer.renderListContent.should.have.been.called.with({ useIcons: true });
+
+        socialLinks.length.should.equal(2);
+      })
+    })
+    describe('renderListContent', () => {
+      const exampleLinks = [{
+        href: 'http://example.com/6',
+        title: '6',
+        meta: 'six',
+      }];
+      it('Returns an array of <a> tags', () => {
+        const links = footer.renderListContent(exampleLinks);
+        links.length.should.equal(1);
+        links[0].type.should.equal('a');
+        links[0].props.href.should.equal('http://example.com/6');
+        links[0].props.children.should.equal('6');
+      });
+      it('When {useIcons: true}, render icons instead of just the title text.', () => {
+        const links = footer.renderListContent(exampleLinks, { useIcons: true });
+        links[0].props.children.type.should.equal(Icon);
+        links[0].props.children.props.icon.should.equal('six');
+      })
+      it('Adds target="_blank" to non-internal links', () => {
+        const links = footer.renderListContent([
+          {
             href: 'http://example.com/6',
             title: '6',
             meta: 'six',
-          }]);
-          links.length.should.equal(1);
-          links[0].type.should.equal('a');
-          links[0].props.href.should.equal('http://example.com/6');
-          if (func === 'renderListContent') {
-            links[0].props.children.should.equal('6');
-          } else {
-            links[0].props.children.type.should.equal(Icon);
-            links[0].props.children.props.icon.should.equal('six');
+            internal: false,
+          }, {
+            href: 'http://example.com/6',
+            title: '6',
+            meta: 'six',
+            internal: true,
           }
-        });
-        it('Adds target="_blank" to non-internal links', () => {
-          const links = footer[func]([
-            {
-              href: 'http://example.com/6',
-              title: '6',
-              meta: 'six',
-              internal: false,
-            }, {
-              href: 'http://example.com/6',
-              title: '6',
-              meta: 'six',
-              internal: true,
-            }
-          ]);
-          links[0].props.target.should.equal('_blank');
-          links[1].props.should.not.have.property('target')
-        });
+        ]);
+        links[0].props.target.should.equal('_blank');
+        links[1].props.should.not.have.property('target')
       });
     });
   });

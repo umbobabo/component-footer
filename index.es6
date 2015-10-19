@@ -15,27 +15,24 @@ export default class Footer extends React.Component {
     }
     return {};
   }
-  renderListContent(array) {
+  renderListContent(array, options = {}) {
+    const { useIcons = false } = options;
     return array.map((item) => {
-      if (item.internal === false) {
-        return <a className="ec-footer__link ec-footer__link--external" href={item.href} target="_blank">{item.title}</a>
+      let linkContents = item.title;
+      if (useIcons) {
+        linkContents = <Icon icon={item.meta} color="#B6B6B6" />;
       }
-      return <a className="ec-footer__link" href={item.href}>{item.title}</a>;
+      if (item.internal === false) {
+        return <a className="ec-footer__link ec-footer__link--external" href={item.href} target="_blank">{linkContents}</a>;
+      }
+      return <a className="ec-footer__link" href={item.href}>{linkContents}</a>;
     });
   }
   renderSocialListContent(array) {
     return array
     .filter(({meta}) => meta !== 'mail')
-    .map((item) => {
-      const className = [
-        'ec-footer__link',
-      ];
-      return (
-        <a href={item.href} title={item.title} className={className.join(' ')} {...this.targetIfNeeded(item)}>
-          <Icon icon={item.meta} color="#B6B6B6" />
-        </a>
-      );
-    });
+    .map((item) =>
+      this.renderListContent(array, { useIcons: true }));
   }
   renderNewsletterLink(social) {
     const newsletter = social.filter(({ meta }) => meta === 'mail')[0] || null;
