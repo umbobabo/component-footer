@@ -29,10 +29,8 @@ export default class Footer extends React.Component {
     });
   }
   renderSocialListContent(array) {
-    return array
-    .filter(({meta}) => meta !== 'mail')
-    .map((item) =>
-      this.renderListContent(array, { useIcons: true }));
+    const allExceptMail = array.filter(({meta}) => meta !== 'mail');
+    return this.renderListContent(allExceptMail, { useIcons: true });
   }
   renderNewsletterLink(social) {
     const newsletter = social.filter(({ meta }) => meta === 'mail')[0] || null;
