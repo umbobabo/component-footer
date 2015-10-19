@@ -52,7 +52,7 @@ module.exports = function(config) {
     sauceLabs: {
       testName: require('./package').name,
       startConnect: true,
-      username: 'sublimino',
+      username: process.env['SAUCE_USERNAME'],
       build: (function () {
         if (process.env.GO_PIPELINE_NAME && process.env.GO_PIPELINE_LABEL) {
           return process.env.GO_PIPELINE_NAME + '-' + process.env.GO_PIPELINE_LABEL;
