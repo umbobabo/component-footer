@@ -15,8 +15,7 @@ export default class Footer extends React.Component {
     }
     return {};
   }
-  renderListContent(array, options = {}) {
-    const { useIcons = false, iconColor = '#B6B6B6' } = options;
+  renderListContent(array, { useIcons = false, iconColor = '#B6B6B6' } = {}) {
     return array.map((item) => {
       let linkContents = item.title;
       if (useIcons) {
