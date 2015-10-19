@@ -16,31 +16,38 @@ export default class Footer extends React.Component {
     return {};
   }
   renderListContent(array, options = {}) {
-    const { useIcons = false } = options;
+    const { useIcons = false, iconColor = '#B6B6B6' } = options;
     return array.map((item) => {
       let linkContents = item.title;
       if (useIcons) {
-        linkContents = <Icon icon={item.meta} color="#B6B6B6" />;
+        linkContents = <Icon icon={item.meta} color={iconColor} />;
       }
       if (item.internal === false) {
-        return <a className="ec-footer__link ec-footer__link--external" href={item.href} target="_blank">{linkContents}</a>;
+        return (
+          <a className="ec-footer__link ec-footer__link--external"
+            href={item.href} target="_blank"
+          >{linkContents}</a>);
       }
       return <a className="ec-footer__link" href={item.href}>{linkContents}</a>;
     });
   }
   renderSocialListContent(array) {
-    const allExceptMail = array.filter(({meta}) => meta !== 'mail');
+    const allExceptMail = array.filter(({ meta }) => meta !== 'mail');
     return this.renderListContent(allExceptMail, { useIcons: true });
   }
   renderNewsletterLink(social) {
     const newsletter = social.filter(({ meta }) => meta === 'mail')[0] || null;
-    if (!newsletter) { return []; }
+    if (!newsletter) {
+      return [];
+    }
     return (
-      <a className="ec-footer__link ec-footer__subscribe-newsletter-link" href={newsletter.href} {...this.targetIfNeeded(newsletter)}>
+      <a className="ec-footer__link ec-footer__subscribe-newsletter-link"
+        href={newsletter.href} {...this.targetIfNeeded(newsletter)}
+      >
         <Icon icon="mail" className="ec-footer__subscribe-newsletter-icon" color="#B6B6B6"/>
         {newsletter.title}
       </a>
-    )
+    );
   }
   render() {
     /*eslint-disable */
@@ -82,7 +89,9 @@ export default class Footer extends React.Component {
                 {this.renderListContent(context.business)}
               </List>
             </div>
-            <p className="ec-footer__copyright">Copyright © The Economist Newspaper Limited 2005. All rights reserved.</p>
+            <p className="ec-footer__copyright">
+              Copyright © The Economist Newspaper Limited 2005. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>

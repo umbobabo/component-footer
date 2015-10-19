@@ -1,5 +1,4 @@
 import Footer from '../index.es6';
-import List from '@economist/component-list';
 import Icon from '@economist/component-icon';
 import React from 'react/addons';
 
@@ -35,7 +34,7 @@ describe(`A Footer`, () => {
       footer.renderListContent.should.have.been.called.with(basicData.customer);
       footer.renderListContent.should.have.been.called.with(basicData.economist);
       footer.renderListContent.should.have.been.called.with(basicData.business);
-      footer.renderSocialListContent.should.have.been.called.with(basicData.social)
+      footer.renderSocialListContent.should.have.been.called.with(basicData.social);
     });
     describe('renderSocialListContent', () => {
       it('Removes any item with the mail attribute and calls renderListContent with useIcons:true', () => {
@@ -70,16 +69,16 @@ describe(`A Footer`, () => {
       }];
       it('Returns an array of <a> tags', () => {
         const links = footer.renderListContent(exampleLinks);
-        links.length.should.equal(1);
-        links[0].type.should.equal('a');
-        links[0].props.href.should.equal('http://example.com/6');
-        links[0].props.children.should.equal('6');
+        links.should.deep.equal([
+          <a href="http://example.com/6" className="ec-footer__link">6</a>
+        ]);
       });
       it('When {useIcons: true}, render icons instead of just the title text.', () => {
-        const links = footer.renderListContent(exampleLinks, { useIcons: true });
-        links[0].props.children.type.should.equal(Icon);
-        links[0].props.children.props.icon.should.equal('six');
-      })
+        const links = footer.renderListContent(exampleLinks, { useIcons: true, iconColor: '#FF0000' });
+        links.should.deep.equal([
+          <a href="http://example.com/6" className="ec-footer__link"><Icon icon="six" color="#FF0000" /></a>
+        ]);
+      });
       it('Adds target="_blank" to non-internal links', () => {
         const links = footer.renderListContent([
           {
@@ -95,7 +94,7 @@ describe(`A Footer`, () => {
           }
         ]);
         links[0].props.target.should.equal('_blank');
-        links[1].props.should.not.have.property('target')
+        links[1].props.should.not.have.property('target');
       });
     });
   });
