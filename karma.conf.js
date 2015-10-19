@@ -31,6 +31,7 @@ module.exports = function(config) {
   };
   config.set({
     basePath: '',
+    logLevel: config.LOG_DEBUG,
     frameworks: ['mocha', 'chai'],
     files: [
       require.resolve('chai-spies/chai-spies'),
