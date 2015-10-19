@@ -15,37 +15,38 @@ export default class Footer extends React.Component {
     }
     return {};
   }
-  renderListContent(array) {
+  renderListContent(array, { useIcons = false, iconColor = '#B6B6B6' } = {}) {
     return array.map((item) => {
-      if (item.internal === false) {
-        return <a className="ec-footer__link ec-footer__link--external" href={item.href} target="_blank">{item.title}</a>
+      let linkContents = item.title;
+      if (useIcons) {
+        linkContents = <Icon icon={item.meta} color={iconColor} />;
       }
-      return <a className="ec-footer__link" href={item.href}>{item.title}</a>;
+      if (item.internal === false) {
+        return (
+          <a className="ec-footer__link ec-footer__link--external"
+            href={item.href} target="_blank"
+          >{linkContents}</a>);
+      }
+      return <a className="ec-footer__link" href={item.href}>{linkContents}</a>;
     });
   }
   renderSocialListContent(array) {
-    return array
-    .filter(({meta}) => meta !== 'mail')
-    .map((item) => {
-      const className = [
-        'ec-footer__link',
-      ];
-      return (
-        <a href={item.href} title={item.title} className={className.join(' ')} {...this.targetIfNeeded(item)}>
-          <Icon icon={item.meta} color="#B6B6B6" />
-        </a>
-      );
-    });
+    const allExceptMail = array.filter(({ meta }) => meta !== 'mail');
+    return this.renderListContent(allExceptMail, { useIcons: true });
   }
   renderNewsletterLink(social) {
     const newsletter = social.filter(({ meta }) => meta === 'mail')[0] || null;
-    if (!newsletter) { return []; }
+    if (!newsletter) {
+      return [];
+    }
     return (
-      <a className="ec-footer__link ec-footer__subscribe-newsletter-link" href={newsletter.href} {...this.targetIfNeeded(newsletter)}>
+      <a className="ec-footer__link ec-footer__subscribe-newsletter-link"
+        href={newsletter.href} {...this.targetIfNeeded(newsletter)}
+      >
         <Icon icon="mail" className="ec-footer__subscribe-newsletter-icon" color="#B6B6B6"/>
         {newsletter.title}
       </a>
-    )
+    );
   }
   render() {
     /*eslint-disable */
@@ -87,7 +88,9 @@ export default class Footer extends React.Component {
                 {this.renderListContent(context.business)}
               </List>
             </div>
-            <p className="ec-footer__copyright">Copyright © The Economist Newspaper Limited 2005. All rights reserved.</p>
+            <p className="ec-footer__copyright">
+              Copyright © The Economist Newspaper Limited 2005. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>
