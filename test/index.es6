@@ -43,7 +43,7 @@ describe(`A Footer`, () => {
           {
             href: 'http://example.com/1',
             title: '1',
-            meta: 'one',
+            meta: 'twitter',
           },
           {
             href: 'http://example.com/2',
@@ -53,7 +53,7 @@ describe(`A Footer`, () => {
           {
             href: 'http://example.com/3',
             title: 2,
-            meta: 'three',
+            meta: 'close',
           }
         ]);
         footer.renderListContent.should.have.been.called.with({ useIcons: true });
@@ -65,7 +65,7 @@ describe(`A Footer`, () => {
       const exampleLinks = [{
         href: 'http://example.com/6',
         title: '6',
-        meta: 'six',
+        meta: 'facebook',
       }];
       it('Returns an array of <a> tags', () => {
         const links = footer.renderListContent(exampleLinks);
@@ -76,7 +76,7 @@ describe(`A Footer`, () => {
       it('When {useIcons: true}, render icons instead of just the title text.', () => {
         const links = footer.renderListContent(exampleLinks, { useIcons: true, iconColor: '#FF0000' });
         links.should.deep.equal([
-          <a href="http://example.com/6" className="ec-footer__link"><Icon icon="six" color="#FF0000" /></a>
+          <a href="http://example.com/6" className="ec-footer__link"><Icon icon="facebook" color="#FF0000" /></a>
         ]);
       });
       it('Adds target="_blank" to non-internal links', () => {
@@ -84,12 +84,12 @@ describe(`A Footer`, () => {
           {
             href: 'http://example.com/6',
             title: '6',
-            meta: 'six',
+            meta: 'facebook',
             internal: false,
           }, {
             href: 'http://example.com/6',
             title: '6',
-            meta: 'six',
+            meta: 'facebook',
             internal: true,
           }
         ]);
