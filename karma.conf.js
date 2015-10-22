@@ -48,12 +48,12 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
     autoWatch: false,
     customLaunchers: browsers,
+    captureTimeout: 1000 * 60 * 10,
     browserDisconnectTimeout: 1000 * 60 * 2,
     browserNoActivityTimeout: 1000 * 60 * 2,
     sauceLabs: {
       testName: require('./package').name,
       startConnect: true,
-      username: process.env['SAUCE_USERNAME'],
       build: (function () {
         if (process.env.GO_PIPELINE_NAME && process.env.GO_PIPELINE_LABEL) {
           return process.env.GO_PIPELINE_NAME + '-' + process.env.GO_PIPELINE_LABEL;
