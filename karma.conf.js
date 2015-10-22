@@ -48,7 +48,7 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
     autoWatch: false,
     customLaunchers: browsers,
-    captureTimeout: 1000 * 60 * 10,
+    captureTimeout: 1000 * 60 * 2,
     browserDisconnectTimeout: 1000 * 60 * 2,
     browserNoActivityTimeout: 1000 * 60 * 2,
     sauceLabs: {
