@@ -21,13 +21,17 @@ export default class Footer extends React.Component {
       if (useIcons) {
         linkContents = <Icon icon={item.meta} color={iconColor} />;
       }
+      const commonProps = {
+        href: item.href,
+        key: `${item.title}-${item.meta}-${item.internal}-${item.href}`
+      };
       if (item.internal === false) {
         return (
           <a className="ec-footer__link ec-footer__link--external"
-            href={item.href} target="_blank"
+          {...commonProps} target="_blank"
           >{linkContents}</a>);
       }
-      return <a className="ec-footer__link" href={item.href}>{linkContents}</a>;
+      return <a className="ec-footer__link" {...commonProps}>{linkContents}</a>;
     });
   }
   renderSocialListContent(array) {
