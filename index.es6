@@ -7,6 +7,7 @@ export default class Footer extends React.Component {
   static get propTypes() {
     return {
       data: React.PropTypes.object,
+      quote: React.PropTypes.string,
     };
   }
   targetIfNeeded({ internal }) {
@@ -53,14 +54,19 @@ export default class Footer extends React.Component {
     );
   }
   render() {
-    /*eslint-disable */
-    const html = {
-      __html: `Published since September 1843 to take part in <br/><em>“a severe contest between intelligence, which presses forward,<br/>and an unworthy, timid ignorance obstructing our progress.”</em>`,
+    let quote = null;
+    if (this.props.quote) {
+      /*eslint-disable */
+      const dangerousInnerHTML = {
+        __html: this.props.quote,
+      };
+      /*eslint-enable */
+      quote = (
+        <div className="ec-footer__quote">
+          <p className="ec-footer__quote-paragraph" dangerouslySetInnerHTML={ dangerousInnerHTML } />
+        </div>
+      );
     }
-    const quote = (
-      <p className="ec-footer__quote-paragraph" dangerouslySetInnerHTML={html} />
-    );
-    /*eslint-enable */
 
     const context = this.props.data;
     return (
@@ -85,7 +91,7 @@ export default class Footer extends React.Component {
               </List>
             </div>
           </div>
-          <div className="ec-footer__quote">{quote}</div>
+          {quote}
           <div className="ec-footer__footnote">
             <div className="ec-footer__list ec-footer__list--footnote">
               <List>
