@@ -209,6 +209,7 @@
   .ec-footer__footnote .ec-footer__copyright {
     font-size: var(--text-size-step--2);
     line-height: var(--text-line-height-body-on-step--2);
+    margin: 0;  /* Reset <p> styling */
   }
 
   .ec-footer__footnote .list__item {
