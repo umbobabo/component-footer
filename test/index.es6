@@ -69,15 +69,15 @@ describe(`A Footer`, () => {
       }];
       it('Returns an array of <a> tags', () => {
         const links = footer.renderListContent(exampleLinks);
-        links.should.deep.equal([
-          <a href="http://example.com/6" className="ec-footer__link">6</a>
-        ]);
+        links.should.have.length(1)
+        links[0].props.href.should.equal('http://example.com/6')
+        links[0].props.children.should.equal('6')
       });
       it('When {useIcons: true}, render icons instead of just the title text.', () => {
         const links = footer.renderListContent(exampleLinks, { useIcons: true, iconColor: '#FF0000' });
-        links.should.deep.equal([
-          <a href="http://example.com/6" className="ec-footer__link"><Icon icon="facebook" color="#FF0000" /></a>
-        ]);
+        const icon = links[0].props.children;
+        icon.props.should.have.property('icon').equal('facebook')
+        icon.props.should.have.property('color').equal('#FF0000')
       });
       it('Adds target="_blank" to non-internal links', () => {
         const links = footer.renderListContent([
