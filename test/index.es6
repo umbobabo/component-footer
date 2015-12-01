@@ -1,6 +1,8 @@
 import Footer from '../index.es6';
-import Icon from '@economist/component-icon';
 import React from 'react/addons';
+import chai from 'chai';
+import chaiSpies from 'chai-spies';
+chai.use(chaiSpies).should();
 
 describe(`A Footer`, () => {
   describe(`it's a React component`, () => {
@@ -18,7 +20,7 @@ describe(`A Footer`, () => {
       social: Object.freeze([]),
       business: Object.freeze([]),
     });
-    let footer;
+    let footer = null;
     beforeEach(() => {
       footer = new Footer({ data: basicData });
     });
@@ -54,31 +56,36 @@ describe(`A Footer`, () => {
             href: 'http://example.com/3',
             title: 2,
             meta: 'close',
-          }
+          },
         ]);
         footer.renderListContent.should.have.been.called.with({ useIcons: true });
 
         socialLinks.length.should.equal(2);
-      })
-    })
+      });
+    });
+
     describe('renderListContent', () => {
-      const exampleLinks = [{
-        href: 'http://example.com/6',
-        title: '6',
-        meta: 'facebook',
-      }];
+      const exampleLinks = [
+        {
+          href: 'http://example.com/6',
+          title: '6',
+          meta: 'facebook',
+        },
+      ];
       it('Returns an array of <a> tags', () => {
         const links = footer.renderListContent(exampleLinks);
-        links.should.have.length(1)
-        links[0].props.href.should.equal('http://example.com/6')
-        links[0].props.children.should.equal('6')
+        links.should.have.length(1);
+        links[0].props.href.should.equal('http://example.com/6');
+        links[0].props.children.should.equal('6');
       });
+
       it('When {useIcons: true}, render icons instead of just the title text.', () => {
         const links = footer.renderListContent(exampleLinks, { useIcons: true, iconColor: '#FF0000' });
         const icon = links[0].props.children;
-        icon.props.should.have.property('icon').equal('facebook')
-        icon.props.should.have.property('color').equal('#FF0000')
+        icon.props.should.have.property('icon').equal('facebook');
+        icon.props.should.have.property('color').equal('#FF0000');
       });
+
       it('Adds target="_blank" to non-internal links', () => {
         const links = footer.renderListContent([
           {
@@ -91,7 +98,7 @@ describe(`A Footer`, () => {
             title: '6',
             meta: 'facebook',
             internal: true,
-          }
+          },
         ]);
         links[0].props.target.should.equal('_blank');
         links[1].props.should.not.have.property('target');
