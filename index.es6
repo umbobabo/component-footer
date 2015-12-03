@@ -24,13 +24,18 @@ export default class Footer extends React.Component {
       }
       const commonProps = {
         href: item.href,
-        key: `${item.title}-${item.meta}-${item.internal}-${item.href}`
+        key: `${item.title}-${item.meta}-${item.internal}-${item.href}`,
       };
       if (item.internal === false) {
         return (
-          <a className="ec-footer__link ec-footer__link--external"
-          {...commonProps} target="_blank"
-          >{linkContents}</a>);
+          <a
+            className="ec-footer__link ec-footer__link--external"
+            {...commonProps}
+            target="_blank"
+          >
+            {linkContents}
+          </a>
+        );
       }
       return <a className="ec-footer__link" {...commonProps}>{linkContents}</a>;
     });
@@ -56,19 +61,23 @@ export default class Footer extends React.Component {
   render() {
     let quote = null;
     if (this.props.quote) {
-      /*eslint-disable */
-      const dangerousInnerHTML = {
-        __html: this.props.quote,
-      };
-      /*eslint-enable */
+      const quoteParagraph = () => ({
+        __html: this.props.quote, // eslint-disable-line
+      });
+      /* eslint-disable react/no-danger */
       quote = (
         <div className="ec-footer__quote">
-          <p className="ec-footer__quote-paragraph" dangerouslySetInnerHTML={ dangerousInnerHTML } />
+          <p
+            className="ec-footer__quote-paragraph"
+            dangerouslySetInnerHTML={quoteParagraph()}
+          />
         </div>
       );
+      /* eslint-enable react/no-danger */
     }
 
     const context = this.props.data;
+    const currentYear = new Date().getFullYear();
     return (
       <footer className="ec-footer">
         <div className="ec-footer__wrapper">
@@ -99,7 +108,7 @@ export default class Footer extends React.Component {
               </List>
             </div>
             <p className="ec-footer__copyright">
-              Copyright © The Economist Newspaper Limited 2005. All rights reserved.
+              Copyright © The Economist Newspaper Limited {currentYear}. All rights reserved.
             </p>
           </div>
         </div>

@@ -69,15 +69,26 @@
 .ec-footer .list__item {
   display: inline-block;
   width: 50%;
+  vertical-align: top;
 }
+
+.ec-footer__list--subs .list__item {
+  display: block;
+  width: 100%;
+}
+
 /* Tablet means 4 columns pretty much everywhere */
 @media screen and (min-width: 650px) and (max-width: 1000px) {
-  .ec-footer .list__item { width: 25%; }
+  .ec-footer__list--subs .list__item {
+    display: inline-block;
+  }
+
+  .ec-footer .list__item {
+    width: 25%;
+  }
 }
 
-
 /* This makes sure that they stretch for flex to pick them up*/
-.ec-footer__list--subs .list__item,
 .ec-footer__list--footnote .list__item,
 .ec-footer__list--economist .list__item {
   white-space: nowrap;
@@ -220,4 +231,3 @@
     padding-right: 0;
   }
 }
-
