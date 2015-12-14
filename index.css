@@ -26,6 +26,7 @@
   padding-top: calc(var(--grid-spacing-camel) - calc(var(--grid-spacing-donkey) / 2));
   padding-bottom: 0;
   color: var(--color-london);
+  overflow: hidden;  /* Because the -15px margin in the icon list could cause problems */
 }
 
 .ec-footer__wrapper {
