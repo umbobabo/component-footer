@@ -12,7 +12,6 @@
     "*.js",
     "*.es6",
     "*.css",
-    "assets/*",
     "!karma.conf.js",
     "!testbundle.js"
   ],
