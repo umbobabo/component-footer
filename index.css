@@ -161,6 +161,10 @@
     padding: var(--grid-spacing-sheep) 0;
     border-top: 1px solid var(--color-moscow);
   }
+
+  .ec-footer__quote--no-mobile {
+    display: none;
+  }
 }
 
 /* Desktop only */

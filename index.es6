@@ -8,6 +8,7 @@ export default class Footer extends React.Component {
     return {
       data: React.PropTypes.object,
       quote: React.PropTypes.string,
+      quoteNoMobile: React.PropTypes.bool
     };
   }
   targetIfNeeded({ internal }) {
@@ -64,9 +65,13 @@ export default class Footer extends React.Component {
       const quoteParagraph = () => ({
         __html: this.props.quote, // eslint-disable-line
       });
+      let quoteClassNames = [ 'ec-footer__quote' ];
+      if (this.props.quoteNoMobile) {
+        quoteClassNames = quoteClassNames.concat([ 'ec-footer__quote--no-mobile' ]);
+      }
       /* eslint-disable react/no-danger */
       quote = (
-        <div className="ec-footer__quote">
+        <div className={quoteClassNames.join(' ')}>
           <p
             className="ec-footer__quote-paragraph"
             dangerouslySetInnerHTML={quoteParagraph()}
