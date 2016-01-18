@@ -168,7 +168,7 @@
 }
 
 /* Desktop only */
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1001px) {
   .ec-footer {
     border-top-width: .6em;
     padding: 0 var(--grid-gutter-l);
