@@ -189,6 +189,7 @@
   /* footnote and copyright go side by side */
   .ec-footer__footnote {
     display: flex;
+    border-top: 1px solid var(--color-moscow);
   }
   .ec-footer__copyright {
     flex: 1;
