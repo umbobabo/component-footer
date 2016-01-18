@@ -73,19 +73,20 @@
   vertical-align: top;
 }
 
-.ec-footer__list--subs .list__item {
-  display: block;
-  width: 100%;
+@media screen and (min-width: 450px) and (max-width: 1000px) {
+  .ec-footer__list--subs .list__item {
+    display: inline-block;
+    width: calc(100% / 3);
+  }
 }
 
 /* Tablet means 4 columns pretty much everywhere */
 @media screen and (min-width: 650px) and (max-width: 1000px) {
-  .ec-footer__list--subs .list__item {
-    display: inline-block;
-  }
-
   .ec-footer .list__item {
     width: 25%;
+  }
+  .ec-footer__list--subs .list__item {
+    width: calc(100% / 3);
   }
 }
 
