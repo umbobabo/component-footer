@@ -134,7 +134,7 @@
     "@economist/component-icon": "^5.2.1",
     "@economist/component-list": "^1.0.0",
     "@economist/component-palette": "^1.0.1",
-    "@economist/component-typography": "^1.4.3"
+    "@economist/component-typography": "^2.0.0"
   },
   "devDependencies": {
     "@economist/component-devpack": "^3.6.1",

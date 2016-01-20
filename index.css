@@ -18,7 +18,7 @@
 
 .ec-footer {
   font-size: 1rem;
-  font-family: var(--fontfamily-body);
+  font-family: var(--fontfamily-sans);
   font-weight: normal;
   background-color: var(--color-beijing);
   border-top: var(--color-economist) solid .4rem;
@@ -31,7 +31,7 @@
 
 .ec-footer__wrapper {
   font-size: var(--text-size-step--1);
-  line-height: var(--text-line-height-body-on-step--1);
+  line-height: var(--text-line-height-sans-on-step--1);
   max-width: var(--site-max-width, 1000px);
   margin: 0 auto;
 }
@@ -128,11 +128,11 @@
   text-align: center;
   color: var(--color-moscow);
   font-size: var(--text-size-step-1);
-  line-height: var(--text-line-height-body-on-step-1);
+  line-height: var(--text-line-height-sans-on-step-1);
   margin: auto;
 }
 .ec-footer__quote em {
-  font-family: var(--fontfamily-display);
+  font-family: var(--fontfamily-serif);
 }
 
 /* Make the text flow when the <br> don't make sense any more */
@@ -142,7 +142,7 @@
 
 .ec-footer__footnote .ec-footer__copyright {
   font-size: var(--text-size-step--2);
-  line-height: var(--text-line-height-body-on-step--2);
+  line-height: var(--text-line-height-sans-on-step--2);
   color: var(--color-moscow);
 }
 
@@ -226,7 +226,7 @@
   .ec-footer__footnote .ec-footer__link,
   .ec-footer__footnote .ec-footer__copyright {
     font-size: var(--text-size-step--2);
-    line-height: var(--text-line-height-body-on-step--2);
+    line-height: var(--text-line-height-sans-on-step--2);
     margin: 0;  /* Reset <p> styling */
   }
 
