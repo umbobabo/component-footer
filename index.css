@@ -1,6 +1,3 @@
-/*
-@import '@economist/component-reset';
-*/
 @import '@economist/component-grid';
 @import '@economist/component-typography';
 @import '@economist/component-palette';
@@ -72,10 +69,14 @@
   width: 50%;
   vertical-align: top;
 }
+.ec-footer__list--subs .list__item {
+  width: 33%;
+}
 
 /* Tablet means 5 columns pretty much everywhere */
 @media screen and (min-width: 650px) and (max-width: 1000px) {
-  .ec-footer .list__item {
+  .ec-footer .list__item,
+  .ec-footer__list--subs .list__item {
     width: 20%;
   }
 }
