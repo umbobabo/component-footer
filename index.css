@@ -16,7 +16,6 @@
 .ec-footer {
   font-size: 1rem;
   font-family: var(--fontfamily-sans);
-  font-weight: normal;
   background-color: var(--color-beijing);
   border-top: var(--color-economist) solid .4rem;
   padding: var(--grid-gutter-s);
