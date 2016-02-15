@@ -14,7 +14,7 @@
 }
 
 .ec-footer {
-  font-size: 1rem;
+  font-size: 0.89rem;
   font-family: var(--fontfamily-sans);
   background-color: var(--color-beijing);
   border-top: var(--color-economist) solid .4rem;
@@ -109,8 +109,8 @@
 }
 
 .ec-footer .ec-footer__subscribe-newsletter-icon {
-  margin: calc(-1 * var(--icon-blank-space));
-  margin-right: calc(calc(-1 * var(--icon-blank-space)) + var(--grid-spacing-rabbit));
+  margin: calc(-0.2 * var(--icon-blank-space));
+  margin-right: calc(calc(-0.1 * var(--icon-blank-space)) + var(--grid-spacing-rabbit));
   vertical-align: middle;
 }
 
