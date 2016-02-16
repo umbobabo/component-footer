@@ -4,9 +4,9 @@
 @import '@economist/component-icon';
 
 :root {
-  --icon-canvas-size: 60px;
+  --icon-canvas-size: 38px;
   --icon-size: 30px;
-  --icon-blank-space: calc(0.25 * 60px);
+  --icon-blank-space: calc(0.25 * 38px);
 }
 
 .ec-footer * {
@@ -108,9 +108,8 @@
   margin: auto;
 }
 
-.ec-footer .ec-footer__subscribe-newsletter-icon {
-  margin: calc(-1 * var(--icon-blank-space));
-  margin-right: calc(calc(-1 * var(--icon-blank-space)) + var(--grid-spacing-rabbit));
+.ec-footer__subscribe-newsletter-icon {
+  margin-right: calc(calc(-1 * var(--icon-blank-space)) + var(--grid-spacing-fox));
   vertical-align: middle;
 }
 

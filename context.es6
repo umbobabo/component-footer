@@ -49,14 +49,14 @@ export default {
       internal: false,
     },
     {
-      title: 'Linkedin',
-      meta: 'linkedin',
+      title: 'Google',
+      meta: 'googleplus',
       href: 'https://www.economist.com',
       internal: false,
     },
     {
-      title: 'Google',
-      meta: 'googleplus',
+      title: 'Linkedin',
+      meta: 'linkedin',
       href: 'https://www.economist.com',
       internal: false,
     },
@@ -69,6 +69,18 @@ export default {
     {
       title: 'Instagram',
       meta: 'instagram',
+      href: 'https://www.economist.com',
+      internal: false,
+    },
+    {
+      title: 'Youtube',
+      meta: 'youtube',
+      href: 'https://www.economist.com',
+      internal: false,
+    },
+    {
+      title: 'rss',
+      meta: 'rss',
       href: 'https://www.economist.com',
       internal: false,
     },

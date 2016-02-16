@@ -1,9 +1,9 @@
 import React from 'react';
 import List from '@economist/component-list';
 import Icon from '@economist/component-icon';
+const iconSize = '38px';
 
 export default class Footer extends React.Component {
-
   static get propTypes() {
     return {
       data: React.PropTypes.object,
@@ -21,7 +21,7 @@ export default class Footer extends React.Component {
     return array.map((item) => {
       let linkContents = item.title;
       if (useIcons) {
-        linkContents = <Icon icon={item.meta} color={iconColor} />;
+        linkContents = <Icon icon={item.meta} color={iconColor} size={iconSize} />;
       }
       const commonProps = {
         href: item.href,
@@ -54,7 +54,10 @@ export default class Footer extends React.Component {
       <a className="ec-footer__link ec-footer__subscribe-newsletter-link"
         href={newsletter.href} {...this.targetIfNeeded(newsletter)}
       >
-        <Icon icon="mail" className="ec-footer__subscribe-newsletter-icon" color="#B6B6B6"/>
+        <Icon icon="mail"
+          className="ec-footer__subscribe-newsletter-icon" color="#B6B6B6"
+          size={iconSize}
+        />
         {newsletter.title}
       </a>
     );
