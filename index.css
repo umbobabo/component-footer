@@ -108,15 +108,10 @@
   margin: auto;
 }
 
-.ec-footer {
-  margin: calc(-1 * var(--icon-blank-space));
-}
-
-.ec-footer__subscribe-newsletter-icon  {
+.ec-footer__subscribe-newsletter-icon {
   margin-right: calc(calc(-1 * var(--icon-blank-space)) + var(--grid-spacing-fox));
   vertical-align: middle;
 }
-
 
 .ec-footer__quote {
   text-align: center;
