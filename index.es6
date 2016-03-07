@@ -18,14 +18,14 @@ export default class Footer extends React.Component {
     return {};
   }
   renderListContent(array, { useIcons = false, iconColor = '#B6B6B6' } = {}) {
-    return array.map((item) => {
+    return array.map((item, index) => {
       let linkContents = item.title;
       if (useIcons) {
         linkContents = <Icon icon={item.meta} color={iconColor} size={iconSize} />;
       }
       const commonProps = {
         href: item.href,
-        key: `${item.title}-${item.meta}-${item.internal}-${item.href}`,
+        key: index,
       };
       if (item.internal === false) {
         return (
