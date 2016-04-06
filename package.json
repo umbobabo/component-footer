@@ -151,7 +151,7 @@
     "eslint-config-strict-react": "^2.0.0",
     "eslint-plugin-filenames": "^0.1.2",
     "eslint-plugin-one-variable-per-var": "^0.0.3",
-    "eslint-plugin-react": "^4.2.3",
+    "eslint-plugin-react": "^4.3.0",
     "karma": "^0.13.10",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.1",
