@@ -33,7 +33,7 @@ export default {
     {
       title: 'Careers',
       href: 'node/21013080',
-    }
+    },
   ],
   social: [
     {

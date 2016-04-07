@@ -2,13 +2,12 @@ import React from 'react';
 import List from '@economist/component-list';
 import Icon from '@economist/component-icon';
 const iconSize = '38px';
-
 export default class Footer extends React.Component {
   static get propTypes() {
     return {
-      data: React.PropTypes.object,
+      data: React.PropTypes.object, // eslint-disable-line id-blacklist
       quote: React.PropTypes.string,
-      quoteNoMobile: React.PropTypes.bool
+      quoteNoMobile: React.PropTypes.bool,
     };
   }
   targetIfNeeded({ internal }) {
@@ -17,33 +16,34 @@ export default class Footer extends React.Component {
     }
     return {};
   }
-  renderListContent(array, { useIcons = false, iconColor = '#B6B6B6' } = {}) {
-    return array.map((item, index) => {
-      let linkContents = item.title;
+  renderListOfLinks(listOfLinks, { useIcons = false, iconColor = '#B6B6B6' } = {}) {
+    return listOfLinks.map((link, index) => {
+      let linkContents = link.title;
       if (useIcons) {
-        linkContents = <Icon icon={item.meta} color={iconColor} size={iconSize} />;
+        linkContents = <Icon icon={link.meta} color={iconColor} size={iconSize} />;
       }
-      const commonProps = {
-        href: item.href,
-        key: index,
-      };
-      if (item.internal === false) {
+      if (link.internal === false) {
         return (
           <a
             className="ec-footer__link ec-footer__link--external"
-            {...commonProps}
+            href={link.href}
+            key={index}
             target="_blank"
           >
             {linkContents}
           </a>
         );
       }
-      return <a className="ec-footer__link" {...commonProps}>{linkContents}</a>;
+      return (
+        <a className="ec-footer__link" href={link.href} key={index}>
+          {linkContents}
+        </a>
+      );
     });
   }
-  renderSocialListContent(array) {
-    const allExceptMail = array.filter(({ meta }) => meta !== 'mail');
-    return this.renderListContent(allExceptMail, { useIcons: true });
+  renderSocialListContent(listOfLinks) {
+    const allExceptMail = listOfLinks.filter(({ meta }) => meta !== 'mail');
+    return this.renderListOfLinks(allExceptMail, { useIcons: true });
   }
   renderNewsletterLink(social) {
     const newsletter = social.filter(({ meta }) => meta === 'mail')[0] || null;
@@ -84,7 +84,7 @@ export default class Footer extends React.Component {
       /* eslint-enable react/no-danger */
     }
 
-    const context = this.props.data;
+    const listsOfLinks = this.props.data;
     const currentYear = new Date().getFullYear();
     return (
       <footer className="ec-footer">
@@ -92,19 +92,19 @@ export default class Footer extends React.Component {
           <div className="ec-footer__menu">
             <div className="ec-footer__list ec-footer__list--subs">
               <List>
-                {this.renderListContent(context.customer)}
+                {this.renderListOfLinks(listsOfLinks.customer)}
               </List>
             </div>
             <div className="ec-footer__list ec-footer__list--social">
               <h4 className="ec-footer__header">Keep updated</h4>
               <List>
-                {this.renderSocialListContent(context.social)}
+                {this.renderSocialListContent(listsOfLinks.social)}
               </List>
-              {this.renderNewsletterLink(context.social)}
+              {this.renderNewsletterLink(listsOfLinks.social)}
             </div>
             <div className="ec-footer__list ec-footer__list--economist">
               <List>
-                {this.renderListContent(context.economist)}
+                {this.renderListOfLinks(listsOfLinks.economist)}
               </List>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default class Footer extends React.Component {
           <div className="ec-footer__footnote">
             <div className="ec-footer__list ec-footer__list--footnote">
               <List>
-                {this.renderListContent(context.business)}
+                {this.renderListOfLinks(listsOfLinks.business)}
               </List>
             </div>
             <p className="ec-footer__copyright">
