@@ -10,6 +10,7 @@
 }
 
 /* stylelint-disable selector-no-universal */
+/* not going to list all the classes. */
 
 .ec-footer * {
   box-sizing: border-box;
@@ -38,18 +39,16 @@
 
 /* A couple of footer-specific resets */
 
-/* stylelint-disable selector-no-type */
-
-.ec-footer a:hover,
-.ec-footer a:focus {
+.ec-footer__link:hover,
+.ec-footer__link:focus {
   opacity: 0.6;
 }
 
-.ec-footer a:active {
+.ec-footer__link:active {
   opacity: 0.3;
 }
 
-.ec-footer ul {
+.ec-footer .list {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -57,16 +56,12 @@
 
 /* This makes the links have a bigger click area */
 
-.ec-footer a {
+.ec-footer__link {
   display: block;
+  color: var(--color-london);
   text-decoration: none;
 }
 
-/* stylelint-enable selector-no-type */
-
-.ec-footer__link {
-  color: var(--color-london);
-}
 
 .ec-footer__quote-paragraph {
   margin: 0;
@@ -131,6 +126,7 @@
 }
 
 /* stylelint-disable selector-no-type */
+/* no class to anchor off */
 
 .ec-footer__list--social .list__item svg {
   display: block;
@@ -153,6 +149,7 @@
 }
 
 /* stylelint-disable selector-no-type */
+/* no class to anchor off */
 
 .ec-footer__quote em {
   font-family: var(--fontfamily-serif);
@@ -165,8 +162,6 @@
     display: none;
   }
 }
-
-/* stylelint-enable selector-no-type */
 
 .ec-footer__footnote .ec-footer__copyright {
   color: var(--color-moscow);
