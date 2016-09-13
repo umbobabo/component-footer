@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from '@economist/component-icon';
-const iconSize = '38px';
+const iconSize = '48px';
 export function targetIfNeeded({ internal }) {
   if (internal === false) {
     return { target: '_blank' };
