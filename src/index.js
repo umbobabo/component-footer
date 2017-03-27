@@ -1,4 +1,3 @@
-
 /* eslint-disable id-match */
 /* eslint-disable camelcase */
 import { createI13nNode } from 'react-i13n';
