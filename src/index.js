@@ -11,16 +11,16 @@ export function targetIfNeeded({ internal }) {
   return {};
 }
 
-function createI13nModel({ link }, i13n, { position }) {
+function createI13nModel({ title, href }, i13n, { position }) {
   return ({
     tedl: {
-      id: `${ link.title.replace(/ /g, '_').toLowerCase() }_footer-link`,
+      id: `${ title.replace(/ /g, '_').toLowerCase() }_footer-link`,
       module_id: i13n ? i13n.module.id : null,
       position,
       type: 'complementary',
       attributes: {
-        name: link.title,
-        destination: link.href,
+        name: title,
+        destination: href,
       },
     },
   });
@@ -48,7 +48,7 @@ export function renderListOfLinks(listOfLinks, {
             className="ec-footer__link ec-footer__link--external"
             href={link.href}
             target="_blank"
-            i13nModel={createI13nModel({ link }, i13n, { position: `${ position }.${ index + 1 }` })}
+            i13nModel={createI13nModel(link, i13n, { position: `${ position }.${ index + 1 }` })}
           >
             {linkContents}
           </Link>
@@ -61,7 +61,7 @@ export function renderListOfLinks(listOfLinks, {
           className="ec-footer__link"
           href={link.href}
           key={index}
-          i13nModel={createI13nModel({ link }, i13n, { position: `${ position }.${ index + 1 }` })}
+          i13nModel={createI13nModel(link, i13n, { position: `${ position }.${ index + 1 }` })}
         >
           {linkContents}
         </Link>
@@ -85,7 +85,7 @@ export function renderNewsletterLink(social, i13n, { position }) {
     <Link
       className="ec-footer__link ec-footer__subscribe-newsletter-link"
       href={newsletter.href} {...targetIfNeeded(newsletter)}
-      i13nModel={createI13nModel({ link: newsletter }, i13n, { position })}
+      i13nModel={createI13nModel(newsletter, i13n, { position })}
     >
       <Icon icon="mail"
         className="ec-footer__subscribe-newsletter-icon" color="#B6B6B6"
