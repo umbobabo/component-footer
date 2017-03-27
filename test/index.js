@@ -1,6 +1,5 @@
 import 'babel-polyfill';
 import Footer from '../src';
-import Icon from '@economist/component-icon';
 import React from 'react';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -70,12 +69,10 @@ describe('Footer', () => {
     });
 
     it('renders <Icon /> with the supplied "social" content', () => {
-      footer.find('.ec-footer__list--social .ec-footer__link').should.contain(
-        <Icon
-          icon="facebook"
-          size="38px"
-          color="#B6B6B6"
-        />
+      footer.find('.ec-footer__list--social .ec-footer__link').should.have.html(
+        /* eslint-disable max-len */
+        '<a class="ec-footer__link ec-footer__link--external" href="https://www.economist.com" target="_blank"><svg role="img" class="Icon Icon-facebook" fill="#B6B6B6" width="48px" height="48px"><title>facebook icon</title><use xlink:href="/assets/icons.svg#facebook"></use></svg></a>'
+        /* eslint-enable max-len */
       );
     });
 
