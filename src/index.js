@@ -11,6 +11,21 @@ export function targetIfNeeded({ internal }) {
   return {};
 }
 
+function createI13nModel({ link }, i13n, { position }) {
+  return ({
+    tedl: {
+      id: `${ link.title.replace(/ /g, '_').toLowerCase() }_footer-link`,
+      module_id: i13n ? i13n.module.id : null,
+      position,
+      type: 'complementary',
+      attributes: {
+        name: link.title,
+        destination: link.href,
+      },
+    },
+  });
+}
+
 const I13nLink = createI13nNode('a', {
   isLeafNode: true,
   bindClickEvent: true,
@@ -26,18 +41,6 @@ export function renderListOfLinks(listOfLinks, {
     if (useIcons) {
       linkContents = <Icon icon={link.meta} color={iconColor} size={iconSize} />;
     }
-    const i13nModel = {
-      tedl: {
-        id: `${ link.title.replace(/ /g, '_').toLowerCase() }_footer-link`,
-        module_id: i13n ? i13n.module.id : null,
-        position: `${ position }.${ index + 1 }`,
-        type: 'complementary',
-        attributes: {
-          name: link.title,
-          destination: link.href,
-        },
-      },
-    };
     if (link.internal === false) {
       return (
         <li className="list__item" key={index}>
@@ -45,7 +48,7 @@ export function renderListOfLinks(listOfLinks, {
             className="ec-footer__link ec-footer__link--external"
             href={link.href}
             target="_blank"
-            i13nModel={i13nModel}
+            i13nModel={createI13nModel({ link }, i13n, { position: `${ position }.${ index + 1 }` })}
           >
             {linkContents}
           </Link>
@@ -58,7 +61,7 @@ export function renderListOfLinks(listOfLinks, {
           className="ec-footer__link"
           href={link.href}
           key={index}
-          i13nModel={i13nModel}
+          i13nModel={createI13nModel({ link }, i13n, { position: `${ position }.${ index + 1 }` })}
         >
           {linkContents}
         </Link>
@@ -82,18 +85,7 @@ export function renderNewsletterLink(social, i13n, { position }) {
     <Link
       className="ec-footer__link ec-footer__subscribe-newsletter-link"
       href={newsletter.href} {...targetIfNeeded(newsletter)}
-      i13nModel={{
-        tedl: {
-          id: `${ newsletter.title.replace(/ /g, '_').toLowerCase() }_footer-link`,
-          module_id: i13n ? i13n.module.id : null,
-          position: `${ position }`,
-          type: 'complementary',
-          attributes: {
-            name: newsletter.title,
-            destination: newsletter.href,
-          },
-        },
-      }}
+      i13nModel={createI13nModel({ link: newsletter }, i13n, { position })}
     >
       <Icon icon="mail"
         className="ec-footer__subscribe-newsletter-icon" color="#B6B6B6"
