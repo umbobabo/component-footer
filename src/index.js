@@ -3,6 +3,7 @@
 import { createI13nNode } from 'react-i13n';
 import React from 'react';
 import Icon from '@economist/component-icon';
+import slugger from 'slugger';
 const iconSize = '48px';
 export function targetIfNeeded({ internal }) {
   if (internal === false) {
@@ -14,10 +15,10 @@ export function targetIfNeeded({ internal }) {
 function createI13nModel({ title, href }, i13n, { position }) {
   return ({
     tedl: {
-      id: `${ title.replace(/ /g, '_').toLowerCase() }_footer-link`,
+      id: `${ slugger(title) }_footer-link`,
       module_id: i13n ? i13n.module.id : null,
       position,
-      type: 'complementary',
+      type: 'link',
       attributes: {
         name: title,
         destination: href,
@@ -26,21 +27,28 @@ function createI13nModel({ title, href }, i13n, { position }) {
   });
 }
 
-const I13nLink = createI13nNode('a', {
-  isLeafNode: true,
-  bindClickEvent: true,
-  follow: true,
-});
+function createLinkTag(LinkComponent, i13n) {
+  let Link = LinkComponent ? LinkComponent : 'a';
+  if (i13n) {
+    Link = createI13nNode(Link, {
+      isLeafNode: true,
+      bindClickEvent: true,
+      follow: true,
+    });
+  }
+  return Link;
+}
+
 export function renderListOfLinks(listOfLinks, {
   useIcons = false,
   iconColor = '#B6B6B6',
-} = {}, i13n, { position }) {
-  const Link = i13n ? I13nLink : 'a';
+} = {}, LinkComponent, i13n, { position }) {
   return listOfLinks.map((link, index) => {
     let linkContents = link.title;
     if (useIcons) {
       linkContents = <Icon icon={link.meta} color={iconColor} size={iconSize} />;
     }
+    const Link = createLinkTag(LinkComponent, i13n);
     if (link.internal === false) {
       return (
         <li className="list__item" key={index}>
@@ -70,22 +78,22 @@ export function renderListOfLinks(listOfLinks, {
   });
 }
 
-export function renderSocialListContent(listOfLinks, i13n, { position }) {
+export function renderSocialListContent(listOfLinks, LinkComponent, i13n, { position }) {
   const allExceptMail = listOfLinks.filter(({ meta }) => meta !== 'mail');
-  return renderListOfLinks(allExceptMail, { useIcons: true }, i13n, { position });
+  return renderListOfLinks(allExceptMail, { useIcons: true }, LinkComponent, i13n, { position });
 }
 
-export function renderNewsletterLink(social, i13n, { position }) {
+export function renderNewsletterLink(social, LinkComponent, i13n, { position }) {
   const newsletter = social.filter(({ meta }) => meta === 'mail')[0] || null;
   if (!newsletter) {
     return [];
   }
-  const Link = i13n ? I13nLink : 'a';
+  const Link = createLinkTag(LinkComponent, i13n);
   return (
     <Link
       className="ec-footer__link ec-footer__subscribe-newsletter-link"
       href={newsletter.href} {...targetIfNeeded(newsletter)}
-      i13nModel={createI13nModel(newsletter, i13n, { position })}
+      i13nModel={createI13nModel(newsletter, LinkComponent, i13n, { position })}
     >
       <Icon icon="mail"
         className="ec-footer__subscribe-newsletter-icon" color="#B6B6B6"
@@ -100,6 +108,7 @@ export default function Footer({
   data = null, // eslint-disable-line
   quote = null,
   quoteNoMobile = false,
+  LinkComponent,
   i13n,
 }) {
   if (quote) {
@@ -128,19 +137,19 @@ export default function Footer({
       <div className="ec-footer__menu">
         <div className="ec-footer__list ec-footer__list--subs">
           <ul className="list">
-            {renderListOfLinks(listsOfLinks.customer, {}, i13n, { position: 1 })}
+            {renderListOfLinks(listsOfLinks.customer, {}, LinkComponent, i13n, { position: 1 })}
           </ul>
         </div>
         <div className="ec-footer__list ec-footer__list--social">
           <h4 className="ec-footer__header">Keep updated</h4>
           <ul className="list">
-            {renderSocialListContent(listsOfLinks.social, i13n, { position: 2 })}
+            {renderSocialListContent(listsOfLinks.social, LinkComponent, i13n, { position: 2 })}
           </ul>
-          {renderNewsletterLink(listsOfLinks.social, i13n, { position: 3 })}
+          {renderNewsletterLink(listsOfLinks.social, LinkComponent, i13n, { position: 3 })}
         </div>
         <div className="ec-footer__list ec-footer__list--economist">
           <ul className="list">
-            {renderListOfLinks(listsOfLinks.economist, {}, i13n, { position: 4 })}
+            {renderListOfLinks(listsOfLinks.economist, {}, LinkComponent, i13n, { position: 4 })}
           </ul>
         </div>
       </div>
@@ -148,7 +157,7 @@ export default function Footer({
       <div className="ec-footer__footnote">
         <div className="ec-footer__list ec-footer__list--footnote">
           <ul className="list">
-            {renderListOfLinks(listsOfLinks.business, {}, i13n, { position: 5 })}
+            {renderListOfLinks(listsOfLinks.business, {}, LinkComponent, i13n, { position: 5 })}
           </ul>
         </div>
         <p className="ec-footer__copyright">
@@ -192,5 +201,6 @@ if (process.env.NODE_ENV !== 'production') {
         type: React.PropTypes.string,
       }),
     }),
+    LinkComponent: React.PropTypes.func,
   };
 }
