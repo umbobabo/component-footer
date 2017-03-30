@@ -80,5 +80,32 @@ describe('Footer', () => {
       footer.find('.ec-footer__list--footnote .list').should.have.exactly(1).descendants('.list__item');
       footer.find('.ec-footer__list--footnote .ec-footer__link').should.have.text('Terms of Use');
     });
+
+    it('should render with i13n props if provided', () => {
+      /* eslint-disable camelcase */
+      /* eslint-disable id-match */
+      footer = shallow(
+        <Footer
+          data={links}
+          quote={quote}
+          i13n={{
+            module: {
+              id: 'economist-footer',
+              type: 'footer',
+              sub_type: 'external-links',
+              placement: 'footer',
+              name: 'mainsite-footer',
+              items: [],
+            },
+          }}
+        />
+     ).node.props;
+      footer.isLeafNode.should.equal(true);
+      footer.bindClickEvent.should.equal(true);
+      footer.follow.should.equal(true);
+      const i13nModel = footer.i13nModel;
+      i13nModel.should.have.key('module');
+      i13nModel.module.should.have.keys([ 'id', 'type', 'sub_type', 'placement', 'name', 'items' ]);
+    });
   });
 });

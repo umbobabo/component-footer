@@ -39,10 +39,19 @@ function createLinkTag(LinkComponent, i13n) {
   return Link;
 }
 
+let i13nIndex = 1;
+function * getPosition() {
+  while (i13nIndex) {
+    yield i13nIndex++;
+  }
+}
+
+const position = getPosition();
 export function renderListOfLinks(listOfLinks, {
   useIcons = false,
   iconColor = '#B6B6B6',
-} = {}, LinkComponent, i13n, { position }) {
+} = {}, LinkComponent, i13n) {
+  const i13nPosition = i13n ? position.next().value : null;
   return listOfLinks.map((link, index) => {
     let linkContents = link.title;
     if (useIcons) {
@@ -56,7 +65,7 @@ export function renderListOfLinks(listOfLinks, {
             className="ec-footer__link ec-footer__link--external"
             href={link.href}
             target="_blank"
-            i13nModel={createI13nModel(link, i13n, { position: `${ position }.${ index + 1 }` })}
+            i13nModel={i13n ? createI13nModel(link, i13n, { position: `${ i13nPosition }.${ index + 1 }` }) : null}
           >
             {linkContents}
           </Link>
@@ -69,7 +78,7 @@ export function renderListOfLinks(listOfLinks, {
           className="ec-footer__link"
           href={link.href}
           key={index}
-          i13nModel={createI13nModel(link, i13n, { position: `${ position }.${ index + 1 }` })}
+          i13nModel={i13n ? createI13nModel(link, i13n, { position: `${ i13nPosition }.${ index + 1 }` }) : null}
         >
           {linkContents}
         </Link>
@@ -78,22 +87,23 @@ export function renderListOfLinks(listOfLinks, {
   });
 }
 
-export function renderSocialListContent(listOfLinks, LinkComponent, i13n, { position }) {
+export function renderSocialListContent(listOfLinks, LinkComponent, i13n) {
   const allExceptMail = listOfLinks.filter(({ meta }) => meta !== 'mail');
-  return renderListOfLinks(allExceptMail, { useIcons: true }, LinkComponent, i13n, { position });
+  return renderListOfLinks(allExceptMail, { useIcons: true }, LinkComponent, i13n);
 }
 
-export function renderNewsletterLink(social, LinkComponent, i13n, { position }) {
+export function renderNewsletterLink(social, LinkComponent, i13n) {
   const newsletter = social.filter(({ meta }) => meta === 'mail')[0] || null;
   if (!newsletter) {
     return [];
   }
   const Link = createLinkTag(LinkComponent, i13n);
+  const i13nPosition = position.next().value;
   return (
     <Link
       className="ec-footer__link ec-footer__subscribe-newsletter-link"
       href={newsletter.href} {...targetIfNeeded(newsletter)}
-      i13nModel={createI13nModel(newsletter, LinkComponent, i13n, { position })}
+      i13nModel={i13n ? createI13nModel(newsletter, i13n, { position: i13nPosition }) : null}
     >
       <Icon icon="mail"
         className="ec-footer__subscribe-newsletter-icon" color="#B6B6B6"
@@ -137,19 +147,19 @@ export default function Footer({
       <div className="ec-footer__menu">
         <div className="ec-footer__list ec-footer__list--subs">
           <ul className="list">
-            {renderListOfLinks(listsOfLinks.customer, {}, LinkComponent, i13n, { position: 1 })}
+            {renderListOfLinks(listsOfLinks.customer, {}, LinkComponent, i13n)}
           </ul>
         </div>
         <div className="ec-footer__list ec-footer__list--social">
           <h4 className="ec-footer__header">Keep updated</h4>
           <ul className="list">
-            {renderSocialListContent(listsOfLinks.social, LinkComponent, i13n, { position: 2 })}
+            {renderSocialListContent(listsOfLinks.social, LinkComponent, i13n)}
           </ul>
-          {renderNewsletterLink(listsOfLinks.social, LinkComponent, i13n, { position: 3 })}
+          {renderNewsletterLink(listsOfLinks.social, LinkComponent, i13n)}
         </div>
         <div className="ec-footer__list ec-footer__list--economist">
           <ul className="list">
-            {renderListOfLinks(listsOfLinks.economist, {}, LinkComponent, i13n, { position: 4 })}
+            {renderListOfLinks(listsOfLinks.economist, {}, LinkComponent, i13n)}
           </ul>
         </div>
       </div>
@@ -157,7 +167,7 @@ export default function Footer({
       <div className="ec-footer__footnote">
         <div className="ec-footer__list ec-footer__list--footnote">
           <ul className="list">
-            {renderListOfLinks(listsOfLinks.business, {}, LinkComponent, i13n, { position: 5 })}
+            {renderListOfLinks(listsOfLinks.business, {}, LinkComponent, i13n)}
           </ul>
         </div>
         <p className="ec-footer__copyright">
