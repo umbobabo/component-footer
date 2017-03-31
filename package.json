@@ -113,7 +113,8 @@
     "@economist/component-icon": "^5.11.1",
     "@economist/component-palette": "^1.5.1",
     "@economist/component-typography": "^3.1.5",
-    "react": "^0.14.8||^15.0.0"
+    "react": "^0.14.8||^15.0.0",
+    "react-i13n": "^2.4.2"
   },
   "devDependencies": {
     "@economist/doc-pack": "^1.0.7",
@@ -165,6 +166,7 @@
     "react-addons-test-utils": "^0.14.8||^15.0.0",
     "react-dom": "^0.14.8||^15.0.0",
     "semantic-release": "^4.3.5",
+    "slugger": "^1.0.1",
     "stylelint": "^6.2.2",
     "stylelint-config-strict": "^5.0.0",
     "travis-after-all": "^1.4.4",
