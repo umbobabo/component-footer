@@ -84,7 +84,7 @@ describe('Footer', () => {
     it('should render with i13n props if provided', () => {
       /* eslint-disable camelcase */
       /* eslint-disable id-match */
-      footer = shallow(
+      const footerProps = shallow(
         <Footer
           data={links}
           quote={quote}
@@ -99,11 +99,11 @@ describe('Footer', () => {
             },
           }}
         />
-     ).node.props;
-      footer.isLeafNode.should.equal(true);
-      footer.bindClickEvent.should.equal(true);
-      footer.follow.should.equal(true);
-      const i13nModel = footer.i13nModel;
+      ).node.props;
+      footerProps.isLeafNode.should.equal(true);
+      footerProps.bindClickEvent.should.equal(true);
+      footerProps.follow.should.equal(true);
+      const i13nModel = footerProps.i13nModel;
       i13nModel.should.have.key('module');
       i13nModel.module.should.have.keys([ 'id', 'type', 'sub_type', 'placement', 'name', 'items' ]);
     });

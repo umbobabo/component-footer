@@ -65,7 +65,7 @@ export function renderListOfLinks(listOfLinks, {
             className="ec-footer__link ec-footer__link--external"
             href={link.href}
             target="_blank"
-            i13nModel={i13n ? createI13nModel(link, i13n, { position: `${ i13nPosition }.${ index + 1 }` }) : null}
+            i13nModel={i13n ? createI13nModel(link, i13n, { position: `${ i13nPosition }.${ index++ }` }) : null}
           >
             {linkContents}
           </Link>
@@ -78,7 +78,7 @@ export function renderListOfLinks(listOfLinks, {
           className="ec-footer__link"
           href={link.href}
           key={index}
-          i13nModel={i13n ? createI13nModel(link, i13n, { position: `${ i13nPosition }.${ index + 1 }` }) : null}
+          i13nModel={i13n ? createI13nModel(link, i13n, { position: `${ i13nPosition }.${ index++ }` }) : null}
         >
           {linkContents}
         </Link>
