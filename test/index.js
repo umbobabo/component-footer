@@ -97,14 +97,13 @@ describe('Footer', () => {
               name: 'mainsite-footer',
               items: [],
             },
+            I13nLink: 'a',
+            I13nFooter: 'footer',
           }}
         />
       ).node.props;
-      footerProps.isLeafNode.should.equal(true);
-      footerProps.bindClickEvent.should.equal(true);
-      footerProps.follow.should.equal(true);
       const i13nModel = footerProps.i13nModel;
-      i13nModel.should.have.key('module');
+      i13nModel.should.contain.key('module');
       i13nModel.module.should.have.keys([ 'id', 'type', 'sub_type', 'placement', 'name', 'items' ]);
     });
   });

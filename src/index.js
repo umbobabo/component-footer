@@ -1,6 +1,5 @@
 /* eslint-disable id-match */
 /* eslint-disable camelcase */
-import { createI13nNode } from 'react-i13n';
 import React from 'react';
 import Icon from '@economist/component-icon';
 import slugger from 'slugger';
@@ -30,11 +29,7 @@ function createI13nModel({ title, href }, i13n, { position }) {
 function createLinkTag(LinkComponent, i13n) {
   let Link = LinkComponent ? LinkComponent : 'a';
   if (i13n) {
-    Link = createI13nNode(Link, {
-      isLeafNode: true,
-      bindClickEvent: true,
-      follow: true,
-    });
+    Link = i13n.I13nLink;
   }
   return Link;
 }
@@ -177,11 +172,7 @@ export default function Footer({
     </div>
   );
   if (i13n) {
-    const I13nFooter = createI13nNode('footer', {
-      isLeafNode: true,
-      bindClickEvent: true,
-      follow: true,
-    });
+    const { I13nFooter } = i13n;
     return (
       <I13nFooter className="ec-footer" i13nModel={i13n}>{content}</I13nFooter>
     );
