@@ -1,5 +1,6 @@
 /* eslint-disable id-match */
 /* eslint-disable camelcase */
+import 'babel-polyfill';
 import React from 'react';
 import Icon from '@economist/component-icon';
 import slugger from 'slugger';
