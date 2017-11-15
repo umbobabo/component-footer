@@ -1,9 +1,13 @@
 import 'babel-polyfill';
 import Footer from '../src';
 import React from 'react';
+import Adapter from 'enzyme-adapter-react-16';
+import Enzyme from 'enzyme';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { shallow } from 'enzyme';
+
+Enzyme.configure({ adapter: new Adapter() });
 chai.use(chaiEnzyme()).should();
 
 describe('Footer', () => {
@@ -101,7 +105,7 @@ describe('Footer', () => {
             I13nFooter: 'footer',
           }}
         />
-      ).node.props;
+      ).getElement().props;
       const i13nModel = footerProps.i13nModel;
       i13nModel.should.contain.key('module');
       i13nModel.module.should.have.keys([ 'id', 'type', 'sub_type', 'placement', 'name', 'items' ]);
