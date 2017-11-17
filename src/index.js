@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 import 'babel-polyfill';
 import React from 'react';
+import PropTypes from 'prop-types';
 import Icon from '@economist/component-icon';
 import slugger from 'slugger';
 const iconSize = '48px';
@@ -185,24 +186,24 @@ export default function Footer({
 
 if (process.env.NODE_ENV !== 'production') {
   Footer.propTypes = {
-    data: React.PropTypes.shape({ // eslint-disable-line
-      customer: React.PropTypes.arrayOf(React.PropTypes.object),
-      economist: React.PropTypes.arrayOf(React.PropTypes.object),
-      social: React.PropTypes.arrayOf(React.PropTypes.object),
-      business: React.PropTypes.arrayOf(React.PropTypes.object),
+    data: PropTypes.shape({ // eslint-disable-line
+      customer: PropTypes.arrayOf(PropTypes.object),
+      economist: PropTypes.arrayOf(PropTypes.object),
+      social: PropTypes.arrayOf(PropTypes.object),
+      business: PropTypes.arrayOf(PropTypes.object),
     }),
-    quote: React.PropTypes.string,
-    quoteNoMobile: React.PropTypes.bool,
-    i13n: React.PropTypes.shape({
-      module: React.PropTypes.shape({
-        id: React.PropTypes.string,
-        items: React.PropTypes.arrayOf(React.PropTypes.object),
-        name: React.PropTypes.string,
-        placement: React.PropTypes.string,
-        sub_type: React.PropTypes.string,
-        type: React.PropTypes.string,
+    quote: PropTypes.string,
+    quoteNoMobile: PropTypes.bool,
+    i13n: PropTypes.shape({
+      module: PropTypes.shape({
+        id: PropTypes.string,
+        items: PropTypes.arrayOf(PropTypes.object),
+        name: PropTypes.string,
+        placement: PropTypes.string,
+        sub_type: PropTypes.string,
+        type: PropTypes.string,
       }),
     }),
-    LinkComponent: React.PropTypes.func,
+    LinkComponent: PropTypes.func,
   };
 }
