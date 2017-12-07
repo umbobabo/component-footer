@@ -15,7 +15,7 @@ describe('Footer', () => {
     React.isValidElement(<Footer />).should.equal(true);
   });
 
-  describe('Rendering', () => {
+  describe('Rendering:', () => {
     let rendered = null;
     let footer = null;
     const links = {
