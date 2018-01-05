@@ -28,6 +28,12 @@ function createI13nModel({ title, href }, i13n, { position }) {
   });
 }
 
+function createI13nProps(link, i13n, options) {
+  return i13n ?
+    { i13nModel: createI13nModel(link, i13n, options) } :
+    {};
+}
+
 function createLinkTag(LinkComponent, i13n) {
   let Link = LinkComponent ? LinkComponent : 'a';
   if (i13n) {
@@ -55,6 +61,7 @@ export function renderListOfLinks(listOfLinks, {
       linkContents = <Icon icon={link.meta} color={iconColor} size={iconSize} />;
     }
     const Link = createLinkTag(LinkComponent, i13n);
+    const i13nProps = createI13nProps(link, i13n, { position: `${ i13nPosition }.${ index + 1 }` });
     if (link.internal === false) {
       return (
         <li className="list__item" key={index}>
@@ -62,7 +69,7 @@ export function renderListOfLinks(listOfLinks, {
             className="ec-footer__link ec-footer__link--external"
             href={link.href}
             target="_blank"
-            i13nModel={i13n ? createI13nModel(link, i13n, { position: `${ i13nPosition }.${ index + 1 }` }) : null}
+            {...i13nProps}
           >
             {linkContents}
           </Link>
@@ -75,7 +82,7 @@ export function renderListOfLinks(listOfLinks, {
           className="ec-footer__link"
           href={link.href}
           key={index}
-          i13nModel={i13n ? createI13nModel(link, i13n, { position: `${ i13nPosition }.${ index + 1 }` }) : null}
+          {...i13nProps}
         >
           {linkContents}
         </Link>
@@ -96,11 +103,12 @@ export function renderNewsletterLink(social, LinkComponent, i13n) {
   }
   const Link = createLinkTag(LinkComponent, i13n);
   const i13nPosition = position.next().value;
+  const i13nProps = createI13nProps(newsletter, i13n, { position: i13nPosition });
   return (
     <Link
       className="ec-footer__link ec-footer__subscribe-newsletter-link"
       href={newsletter.href} {...targetIfNeeded(newsletter)}
-      i13nModel={i13n ? createI13nModel(newsletter, i13n, { position: i13nPosition }) : null}
+      {...i13nProps}
     >
       <Icon icon="mail"
         className="ec-footer__subscribe-newsletter-icon" color="#B6B6B6"
