@@ -174,7 +174,7 @@
 @media (max-width: 1000px) {
   .ec-footer__list--social,
   .ec-footer__list--economist,
-  .ec-footer__quote,
+  .ec-footer__menu + .ec-footer__quote,
   .ec-footer__footnote {
     margin-top: calc(var(--grid-spacing-camel) - calc(var(--grid-spacing-donkey) / 2));
     padding-top: calc(var(--grid-spacing-camel) - calc(var(--grid-spacing-donkey) / 2));
@@ -201,7 +201,7 @@
     display: flex;
     margin: var(--grid-spacing-camel) 0;
   }
-  .ec-footer__quote {
+  .ec-footer__menu + .ec-footer__quote {
     padding: calc(var(--grid-spacing-camel) - calc(var(--grid-spacing-donkey) / 2)) 0;
     border-top: 1px solid var(--color-moscow);
   }
@@ -231,14 +231,14 @@
     border-left: 1px solid var(--color-moscow);
   }
   .ec-footer__list--social .list {
-    margin-right: calc(-1 * var(--icon-blank-space) * 3);  /* So that the last icon does not jump to the next line */
+    margin-right: calc(-1 * var(--icon-blank-space) * 3); /* So that the last icon does not jump to the next line */
   }
   .ec-footer__list--economist {
     flex: 0 1 30%;
   }
   .ec-footer__footnote .ec-footer__link,
   .ec-footer__footnote .ec-footer__copyright {
-    margin: 0;  /* Reset <p> styling */
+    margin: 0; /* Reset <p> styling */
     font-size: var(--text-size-step--2);
     line-height: var(--text-line-height-sans-on-step--2);
   }

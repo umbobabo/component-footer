@@ -5,6 +5,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@economist/component-icon';
 import slugger from 'slugger';
+import EconomistLinks from './parts/economist-links';
+import SocialLinks from './parts/social-links';
+import CustomerLinks from './parts/customer-links';
 const iconSize = '48px';
 export function targetIfNeeded({ internal }) {
   if (internal === false) {
@@ -138,44 +141,30 @@ export default function Footer({
     /* eslint-disable react/no-danger */
     quote = (
       <div className={quoteClassNames.join(' ')}>
-        <p
-          className="ec-footer__quote-paragraph"
-          dangerouslySetInnerHTML={quoteParagraph()}
-        />
+        <p className="ec-footer__quote-paragraph" dangerouslySetInnerHTML={quoteParagraph()} />
       </div>
     );
     /* eslint-enable react/no-danger */
   }
+
   const listsOfLinks = data; // eslint-disable-line
   const currentYear = new Date().getFullYear();
+  // TopPart will be rendered only if some links or children are provided.
+  const topPartLinks = [
+    CustomerLinks(listsOfLinks.customer, {}, LinkComponent, i13n),
+    SocialLinks(listsOfLinks.social, LinkComponent, i13n),
+    children,
+    EconomistLinks(listsOfLinks.economist, {}, LinkComponent, i13n),
+  ].filter((part) => part);
+  const topPartHtml = topPartLinks.length > 0 ? <div className="ec-footer__menu">{topPartLinks}</div> : null;
+
   const content = (
     <div className="ec-footer__wrapper">
-      <div className="ec-footer__menu">
-        <div className="ec-footer__list ec-footer__list--subs">
-          <ul className="list">
-            {renderListOfLinks(listsOfLinks.customer, {}, LinkComponent, i13n)}
-          </ul>
-        </div>
-        <div className="ec-footer__list ec-footer__list--social">
-          <h4 className="ec-footer__header">Keep updated</h4>
-          <ul className="list">
-            {renderSocialListContent(listsOfLinks.social, LinkComponent, i13n)}
-          </ul>
-          {renderNewsletterLink(listsOfLinks.social, LinkComponent, i13n)}
-        </div>
-        {children}
-        <div className="ec-footer__list ec-footer__list--economist">
-          <ul className="list">
-            {renderListOfLinks(listsOfLinks.economist, {}, LinkComponent, i13n)}
-          </ul>
-        </div>
-      </div>
+      {topPartHtml}
       {quote}
       <div className="ec-footer__footnote">
         <div className="ec-footer__list ec-footer__list--footnote">
-          <ul className="list">
-            {renderListOfLinks(listsOfLinks.business, {}, LinkComponent, i13n)}
-          </ul>
+          <ul className="list">{renderListOfLinks(listsOfLinks.business, {}, LinkComponent, i13n)}</ul>
         </div>
         <p className="ec-footer__copyright">
           Copyright © The Economist Newspaper Limited {currentYear}. All rights reserved.
