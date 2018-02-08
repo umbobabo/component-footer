@@ -1,3 +1,4 @@
+/* eslint-disable id-match */
 import React from 'react';
 import { renderListOfLinks } from '../index';
 

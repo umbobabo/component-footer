@@ -1,3 +1,4 @@
+/* eslint-disable id-match */
 import React from 'react';
 import { renderNewsletterLink, renderSocialListContent } from '../index';
 
