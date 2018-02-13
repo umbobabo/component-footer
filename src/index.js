@@ -204,6 +204,6 @@ if (process.env.NODE_ENV !== 'production') {
       }),
     }),
     LinkComponent: PropTypes.func,
-    children: PropTypes.children,
+    children: PropTypes.node,
   };
 }
