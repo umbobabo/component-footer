@@ -1,5 +1,4 @@
-/* eslint-disable id-match */
-/* eslint-disable camelcase */
+/* eslint-disable id-match, camelcase */
 import 'babel-polyfill';
 import React from 'react';
 import PropTypes from 'prop-types';
