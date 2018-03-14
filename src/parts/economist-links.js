@@ -1,6 +1,6 @@
 /* eslint-disable id-match */
 import React from 'react';
-import { renderListOfLinks } from '../index';
+import { renderListOfLinks } from '../utils/helpers';
 
 export default function EconomistLinks(links, config, LinkComponent, i13n) {
   if (!links) {

@@ -1,6 +1,6 @@
 /* eslint-disable id-match */
 import React from 'react';
-import { renderNewsletterLink, renderSocialListContent } from '../index';
+import { renderNewsletterLink, renderSocialListContent } from '../utils/helpers';
 
 export default function SocialLinks(links, LinkComponent, i13n) {
   if (!links) {
