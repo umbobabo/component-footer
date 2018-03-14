@@ -7,7 +7,7 @@ export default function CustomerLinks(links, config, LinkComponent, i13n) {
     return null;
   }
   return (
-    <div className="ec-footer__list ec-footer__list--subs">
+    <div className="ec-footer__list ec-footer__list--subs" key={'CustomerLinks'}>
       <ul className="list">{renderListOfLinks(links, config, LinkComponent, i13n)}</ul>
     </div>
   );

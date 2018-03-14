@@ -7,7 +7,7 @@ export default function EconomistLinks(links, config, LinkComponent, i13n) {
     return null;
   }
   return (
-    <div className="ec-footer__list ec-footer__list--economist">
+    <div className="ec-footer__list ec-footer__list--economist" key={'EconomistLinks'}>
       <ul className="list">{renderListOfLinks(links, {}, LinkComponent, i13n)}</ul>
     </div>
   );

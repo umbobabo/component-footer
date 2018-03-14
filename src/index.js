@@ -38,7 +38,7 @@ export default function Footer({
   const topPartLinks = [
     CustomerLinks(listsOfLinks.customer, {}, LinkComponent, i13n),
     SocialLinks(listsOfLinks.social, LinkComponent, i13n),
-    children,
+    <div className="ec-footer__children" key={'Children'}>{children}</div>,
     EconomistLinks(listsOfLinks.economist, {}, LinkComponent, i13n),
   ].filter((part) => part);
   const topPartHtml = topPartLinks.length > 0 ? <div className="ec-footer__menu">{topPartLinks}</div> : null;
