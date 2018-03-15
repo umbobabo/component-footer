@@ -47,11 +47,13 @@ describe('Footer', () => {
       ],
     };
     const quote = 'foo bar baz';
+    const children = <p className="children">children</p>;
     beforeEach(() => {
       rendered = shallow(
         <Footer
           data={links}
           quote={quote}
+          children={children}
         />
       );
       footer = rendered.find('.ec-footer');
@@ -83,6 +85,10 @@ describe('Footer', () => {
     it('renders with the supplied "business" content', () => {
       footer.find('.ec-footer__list--footnote .list').should.have.exactly(1).descendants('.list__item');
       footer.find('.ec-footer__list--footnote .ec-footer__link').should.have.text('Terms of Use');
+    });
+
+    it('renders the children', () => {
+      footer.find('.children').should.have.text('children');
     });
 
     it('should render with i13n props if provided', () => {
