@@ -10,6 +10,45 @@ import { shallow } from 'enzyme';
 Enzyme.configure({ adapter: new Adapter() });
 chai.use(chaiEnzyme()).should();
 
+const links = {
+  customer: [
+    {
+      title: 'Subscribe',
+      href: 'http://www.economistgroupmedia.com',
+    },
+  ],
+  economist: [
+    {
+      title: 'Advertise',
+      href: 'products/subscribe',
+    },
+  ],
+  social: [
+    {
+      title: 'Facebook',
+      meta: 'facebook',
+      href: 'https://www.economist.com',
+      internal: false,
+    },
+  ],
+  business: [
+    {
+      title: 'Terms of Use',
+      href: 'node/21013093',
+    },
+  ],
+};
+const quote = 'foo bar baz';
+function renderFooter(renderData, renderQuote, renderChildren) {
+  return shallow(
+    <Footer
+      data={renderData}
+      quote={renderQuote}
+      children={renderChildren}
+    />
+  );
+}
+
 describe('Footer', () => {
   it('renders a React element', () => {
     React.isValidElement(<Footer />).should.equal(true);
@@ -18,44 +57,8 @@ describe('Footer', () => {
   describe('Rendering:', () => {
     let rendered = null;
     let footer = null;
-    const links = {
-      customer: [
-        {
-          title: 'Subscribe',
-          href: 'http://www.economistgroupmedia.com',
-        },
-      ],
-      economist: [
-        {
-          title: 'Advertise',
-          href: 'products/subscribe',
-        },
-      ],
-      social: [
-        {
-          title: 'Facebook',
-          meta: 'facebook',
-          href: 'https://www.economist.com',
-          internal: false,
-        },
-      ],
-      business: [
-        {
-          title: 'Terms of Use',
-          href: 'node/21013093',
-        },
-      ],
-    };
-    const quote = 'foo bar baz';
-    const children = <p className="children">children</p>;
     beforeEach(() => {
-      rendered = shallow(
-        <Footer
-          data={links}
-          quote={quote}
-          children={children}
-        />
-      );
+      rendered = renderFooter(links, quote);
       footer = rendered.find('.ec-footer');
     });
 
@@ -87,9 +90,6 @@ describe('Footer', () => {
       footer.find('.ec-footer__list--footnote .ec-footer__link').should.have.text('Terms of Use');
     });
 
-    it('renders the children', () => {
-      footer.find('.children').should.have.text('children');
-    });
 
     it('should render with i13n props if provided', () => {
       /* eslint-disable camelcase */
@@ -115,6 +115,34 @@ describe('Footer', () => {
       const i13nModel = footerProps.i13nModel;
       i13nModel.should.contain.key('module');
       i13nModel.module.should.have.keys([ 'id', 'type', 'sub_type', 'placement', 'name', 'items' ]);
+    });
+
+    describe('Rendering without attributes:', () => {
+      it('renders a top level footer.ec-footer', () => {
+        rendered = renderFooter();
+        rendered.should.have.tagName('footer');
+        rendered.should.have.className('ec-footer');
+        rendered.find('.ec-footer__menu').should.not.be.present();
+      });
+
+      it('does not render the menu without data', () => {
+        rendered = renderFooter();
+        rendered.find('.ec-footer__menu').should.not.be.present();
+      });
+    });
+
+    describe('Rendering children:', () => {
+      it('renders the children if there are any', () => {
+        const children = <p className="children">children</p>;
+        rendered = renderFooter(links, quote, children);
+        rendered.find('.children').should.have.text('children');
+      });
+
+      it('doesnt render the container if it doesnt have children', () => {
+        rendered = renderFooter();
+        rendered.find('.ec-footer__children').should.not.be.present();
+      });
+
     });
   });
 });
