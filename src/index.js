@@ -32,13 +32,13 @@ export default function Footer({
     /* eslint-enable react/no-danger */
   }
 
-  const listsOfLinks = data; // eslint-disable-line
+  const listsOfLinks = data || {}; // eslint-disable-line
   const currentYear = new Date().getFullYear();
   // TopPart will be rendered only if some links or children are provided.
   const topPartLinks = [
     CustomerLinks(listsOfLinks.customer, {}, LinkComponent, i13n),
     SocialLinks(listsOfLinks.social, LinkComponent, i13n),
-    <div className="ec-footer__children" key={'Children'}>{children}</div>,
+    children && <div className="ec-footer__children" key={'Children'}>{children}</div>,
     EconomistLinks(listsOfLinks.economist, {}, LinkComponent, i13n),
   ].filter((part) => part);
   const topPartHtml = topPartLinks.length > 0 ? <div className="ec-footer__menu">{topPartLinks}</div> : null;

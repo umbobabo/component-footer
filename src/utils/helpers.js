@@ -47,7 +47,7 @@ export function renderListOfLinks(listOfLinks, {
   iconColor = '#B6B6B6',
 } = {}, LinkComponent, i13n) {
   const i13nPosition = i13n ? position.next().value : null;
-  return listOfLinks.map((link, index) => {
+  return Array.isArray(listOfLinks) && listOfLinks.map((link, index) => {
     let linkContents = link.title;
     if (useIcons) {
       linkContents = <Icon icon={link.meta} color={iconColor} size={iconSize} />;

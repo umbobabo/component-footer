@@ -117,6 +117,15 @@ describe('Footer', () => {
       i13nModel.module.should.have.keys([ 'id', 'type', 'sub_type', 'placement', 'name', 'items' ]);
     });
 
+    describe('Rendering without attributes:', () => {
+      it('renders a top level footer.ec-footer', () => {
+        rendered = renderFooter();
+        rendered.should.have.tagName('footer');
+        rendered.should.have.className('ec-footer');
+      });
+
+    });
+
     describe('Rendering children:', () => {
       it('renders the children if there are any', () => {
         const children = <p className="children">children</p>;
@@ -134,8 +143,8 @@ describe('Footer', () => {
           ],
         };
         rendered = renderFooter(businessLinks, quote);
-        rendered.find('.ec-footer__menu').should.not.exist();
-        rendered.find('.ec-footer__children').should.not.exist();
+        rendered.find('.ec-footer__menu').should.not.be.present();
+        rendered.find('.ec-footer__children').should.not.be.present();
       });
 
     });
