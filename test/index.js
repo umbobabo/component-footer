@@ -122,8 +122,13 @@ describe('Footer', () => {
         rendered = renderFooter();
         rendered.should.have.tagName('footer');
         rendered.should.have.className('ec-footer');
+        rendered.find('.ec-footer__menu').should.not.be.present();
       });
 
+      it('does not render the menu without data', () => {
+        rendered = renderFooter();
+        rendered.find('.ec-footer__menu').should.not.be.present();
+      });
     });
 
     describe('Rendering children:', () => {
@@ -134,16 +139,7 @@ describe('Footer', () => {
       });
 
       it('doesnt render the container if it doesnt have children', () => {
-        const businessLinks = {
-          business: [
-            {
-              title: 'Terms of Use',
-              href: 'node/21013093',
-            },
-          ],
-        };
-        rendered = renderFooter(businessLinks, quote);
-        rendered.find('.ec-footer__menu').should.not.be.present();
+        rendered = renderFooter();
         rendered.find('.ec-footer__children').should.not.be.present();
       });
 
