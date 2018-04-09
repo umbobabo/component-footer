@@ -16,6 +16,10 @@ const links = {
       title: 'Help',
       href: 'http://www.economist.com/rights/',
     },
+    {
+      title: 'Open Future',
+      href: 'http://www.economist.com/openfuture/',
+    },
   ],
   economist: [
     {
